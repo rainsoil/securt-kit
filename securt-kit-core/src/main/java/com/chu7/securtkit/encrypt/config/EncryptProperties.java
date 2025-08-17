@@ -63,4 +63,71 @@ public class EncryptProperties {
      * 缓存过期时间(秒)
      */
     private long cacheExpireSeconds = 3600;
+    
+    /**
+     * 密钥轮换配置
+     */
+    private KeyRotation keyRotation = new KeyRotation();
+    
+    /**
+     * 缓存配置
+     */
+    private Cache cache = new Cache();
+    
+    /**
+     * 密钥轮换配置
+     */
+    @Data
+    public static class KeyRotation {
+        /**
+         * 是否启用密钥轮换
+         */
+        private boolean enabled = false;
+        
+        /**
+         * 轮换间隔（天）
+         */
+        private int interval = 30;
+        
+        /**
+         * 密钥存储路径
+         */
+        private String keyStorePath;
+        
+        /**
+         * 密钥别名
+         */
+        private String keyAlias = "encrypt-key";
+    }
+    
+    /**
+     * 缓存配置
+     */
+    @Data
+    public static class Cache {
+        /**
+         * 是否启用缓存
+         */
+        private boolean enabled = true;
+        
+        /**
+         * 缓存大小
+         */
+        private int size = 1000;
+        
+        /**
+         * 缓存过期时间（小时）
+         */
+        private int expire = 1;
+        
+        /**
+         * 是否启用本地缓存
+         */
+        private boolean localCache = true;
+        
+        /**
+         * 是否启用分布式缓存
+         */
+        private boolean distributedCache = false;
+    }
 }

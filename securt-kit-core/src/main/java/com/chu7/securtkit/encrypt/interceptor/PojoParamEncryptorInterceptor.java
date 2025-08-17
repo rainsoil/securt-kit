@@ -3,6 +3,7 @@ package com.chu7.securtkit.encrypt.interceptor;
 import com.chu7.securtkit.encrypt.annotation.EncryptField;
 import com.chu7.securtkit.encrypt.cache.TableFieldCache;
 import com.chu7.securtkit.encrypt.strategy.EncryptStrategy;
+import com.chu7.securtkit.encrypt.util.EncryptUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -36,6 +37,9 @@ public class PojoParamEncryptorInterceptor implements Interceptor {
     
     @Autowired
     private List<EncryptStrategy> encryptStrategies;
+    
+    @Autowired
+    private EncryptUtil encryptUtil;
     
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -114,27 +118,30 @@ public class PojoParamEncryptorInterceptor implements Interceptor {
      * 加密对象类型参数
      */
     private void encryptObjectParameters(Object parameter) {
-        Class<?> clazz = parameter.getClass();
-        Field[] fields = clazz.getDeclaredFields();
-        
-        for (Field field : fields) {
-            EncryptField encryptField = field.getAnnotation(EncryptField.class);
-            if (encryptField != null && encryptField.enabled()) {
-                try {
-                    field.setAccessible(true);
-                    Object value = field.get(parameter);
-                    
-                    if (value != null && value instanceof String) {
-                        String algorithm = encryptField.algorithm();
-                        String encryptedValue = encryptValue((String) value, algorithm);
-                        field.set(parameter, encryptedValue);
-                        log.debug("加密对象字段: {}.{} -> {}", clazz.getSimpleName(), field.getName(), encryptedValue);
-                    }
-                } catch (Exception e) {
-                    log.error("加密对象字段失败: {}.{}", clazz.getSimpleName(), field.getName(), e);
-                }
-            }
+        // 使用加密工具类处理对象加密
+        String tableName = getTableNameFromParameter(parameter);
+        encryptUtil.encryptObject(parameter, tableName);
+    }
+    
+    /**
+     * 从参数中获取表名
+     */
+    private String getTableNameFromParameter(Object parameter) {
+        if (parameter == null) {
+            return null;
         }
+        
+        // 尝试从类名推断表名
+        String className = parameter.getClass().getSimpleName();
+        if (className.endsWith("Entity")) {
+            return className.substring(0, className.length() - 6).toLowerCase();
+        } else if (className.endsWith("Model")) {
+            return className.substring(0, className.length() - 5).toLowerCase();
+        } else if (className.endsWith("DTO")) {
+            return className.substring(0, className.length() - 3).toLowerCase();
+        }
+        
+        return className.toLowerCase();
     }
     
     /**
@@ -150,32 +157,7 @@ public class PojoParamEncryptorInterceptor implements Interceptor {
      * 加密值
      */
     private String encryptValue(String value, String algorithm) {
-        if (value == null || value.isEmpty()) {
-            return value;
-        }
-        
-        // 查找对应的加密策略
-        EncryptStrategy strategy = findEncryptStrategy(algorithm);
-        if (strategy != null) {
-            try {
-                return strategy.encrypt(value, "default-key");
-            } catch (Exception e) {
-                log.error("加密失败: {}", e.getMessage(), e);
-                return value;
-            }
-        }
-        
-        return value;
-    }
-    
-    /**
-     * 查找加密策略
-     */
-    private EncryptStrategy findEncryptStrategy(String algorithm) {
-        return encryptStrategies.stream()
-                .filter(strategy -> strategy.supports(algorithm))
-                .findFirst()
-                .orElse(null);
+        return encryptUtil.encrypt(value, algorithm);
     }
     
     @Override

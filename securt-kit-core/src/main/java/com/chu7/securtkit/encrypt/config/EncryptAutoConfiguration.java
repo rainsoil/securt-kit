@@ -5,7 +5,10 @@ import com.chu7.securtkit.encrypt.interceptor.DbFieldEncryptorInterceptor;
 import com.chu7.securtkit.encrypt.interceptor.PojoParamEncryptorInterceptor;
 import com.chu7.securtkit.encrypt.interceptor.PojoResultDecryptorInterceptor;
 import com.chu7.securtkit.encrypt.strategy.AesEncryptStrategy;
+import com.chu7.securtkit.encrypt.strategy.DesEncryptStrategy;
 import com.chu7.securtkit.encrypt.strategy.EncryptStrategy;
+import com.chu7.securtkit.encrypt.strategy.KeyManager;
+import com.chu7.securtkit.encrypt.util.EncryptUtil;
 import com.chu7.securtkit.encrypt.visitor.DbEncryptStatementVisitor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -52,6 +55,33 @@ public class EncryptAutoConfiguration {
     @ConditionalOnMissingBean
     public AesEncryptStrategy aesEncryptStrategy() {
         return new AesEncryptStrategy();
+    }
+    
+    /**
+     * 注册DES加密策略
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public DesEncryptStrategy desEncryptStrategy() {
+        return new DesEncryptStrategy();
+    }
+    
+    /**
+     * 注册默认密钥管理器
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public KeyManager keyManager() {
+        return new com.chu7.securtkit.encrypt.strategy.DefaultKeyManager();
+    }
+    
+    /**
+     * 注册加密工具类
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public EncryptUtil encryptUtil() {
+        return new EncryptUtil();
     }
     
     /**

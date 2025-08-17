@@ -31,6 +31,11 @@ public class TestConfig {
         cache.addTableEncryptFields("user", userEncryptFields);
         cache.addClassNameToTableName("com.chu7.securtkit.encrypt.entity.UserEntity", "user");
         
+        // 配置订单表的加密字段
+        Set<String> orderEncryptFields = new HashSet<>(Arrays.asList("customer_name", "customer_phone", "customer_email", "delivery_address"));
+        cache.addTableEncryptFields("orders", orderEncryptFields);
+        cache.addClassNameToTableName("com.chu7.securtkit.encrypt.entity.OrderEntity", "orders");
+        
         return cache;
     }
 }

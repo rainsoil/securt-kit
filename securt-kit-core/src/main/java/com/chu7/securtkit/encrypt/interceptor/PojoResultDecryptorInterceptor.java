@@ -2,6 +2,7 @@ package com.chu7.securtkit.encrypt.interceptor;
 
 import com.chu7.securtkit.encrypt.annotation.EncryptField;
 import com.chu7.securtkit.encrypt.strategy.EncryptStrategy;
+import com.chu7.securtkit.encrypt.util.EncryptUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -32,6 +33,9 @@ public class PojoResultDecryptorInterceptor implements Interceptor {
     
     @Autowired
     private List<EncryptStrategy> encryptStrategies;
+    
+    @Autowired
+    private EncryptUtil encryptUtil;
     
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -92,27 +96,30 @@ public class PojoResultDecryptorInterceptor implements Interceptor {
             return;
         }
         
-        Class<?> clazz = obj.getClass();
-        Field[] fields = clazz.getDeclaredFields();
-        
-        for (Field field : fields) {
-            EncryptField encryptField = field.getAnnotation(EncryptField.class);
-            if (encryptField != null && encryptField.enabled()) {
-                try {
-                    field.setAccessible(true);
-                    Object value = field.get(obj);
-                    
-                    if (value != null && value instanceof String) {
-                        String algorithm = encryptField.algorithm();
-                        String decryptedValue = decryptValue((String) value, algorithm);
-                        field.set(obj, decryptedValue);
-                        log.debug("解密对象字段: {}.{} -> {}", clazz.getSimpleName(), field.getName(), decryptedValue);
-                    }
-                } catch (Exception e) {
-                    log.error("解密对象字段失败: {}.{}", clazz.getSimpleName(), field.getName(), e);
-                }
-            }
+        // 使用加密工具类处理对象解密
+        String tableName = getTableNameFromObject(obj);
+        encryptUtil.decryptObject(obj, tableName);
+    }
+    
+    /**
+     * 从对象中获取表名
+     */
+    private String getTableNameFromObject(Object obj) {
+        if (obj == null) {
+            return null;
         }
+        
+        // 尝试从类名推断表名
+        String className = obj.getClass().getSimpleName();
+        if (className.endsWith("Entity")) {
+            return className.substring(0, className.length() - 6).toLowerCase();
+        } else if (className.endsWith("Model")) {
+            return className.substring(0, className.length() - 5).toLowerCase();
+        } else if (className.endsWith("DTO")) {
+            return className.substring(0, className.length() - 3).toLowerCase();
+        }
+        
+        return className.toLowerCase();
     }
     
     /**
@@ -146,32 +153,7 @@ public class PojoResultDecryptorInterceptor implements Interceptor {
      * 解密值
      */
     private String decryptValue(String value, String algorithm) {
-        if (value == null || value.isEmpty()) {
-            return value;
-        }
-        
-        // 查找对应的解密策略
-        EncryptStrategy strategy = findDecryptStrategy(algorithm);
-        if (strategy != null) {
-            try {
-                return strategy.decrypt(value, "default-key");
-            } catch (Exception e) {
-                log.error("解密失败: {}", e.getMessage(), e);
-                return value;
-            }
-        }
-        
-        return value;
-    }
-    
-    /**
-     * 查找解密策略
-     */
-    private EncryptStrategy findDecryptStrategy(String algorithm) {
-        return encryptStrategies.stream()
-                .filter(strategy -> strategy.supports(algorithm))
-                .findFirst()
-                .orElse(null);
+        return encryptUtil.decrypt(value, algorithm);
     }
     
     @Override

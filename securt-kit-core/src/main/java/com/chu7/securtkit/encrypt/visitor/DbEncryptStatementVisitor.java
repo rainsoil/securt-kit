@@ -195,7 +195,9 @@ public class DbEncryptStatementVisitor {
                             fieldName, encryptProperties.getKey()
                         );
                         
-                        processedWhere = processedWhere.replaceAll(fieldPattern + "\\s*\\?", encryptExpression);
+                        // 更精确的替换模式
+                        String replacementPattern = String.format("\\b%s\\s*=\\s*\\?", fieldName);
+                        processedWhere = processedWhere.replaceAll(replacementPattern, encryptExpression);
                         hasChanges = true;
                     }
                 }
@@ -203,9 +205,18 @@ public class DbEncryptStatementVisitor {
             
             // 替换WHERE子句
             if (hasChanges) {
+                String replacement = "WHERE " + processedWhere;
+                if (sql.contains("ORDER BY")) {
+                    replacement += " ORDER BY";
+                } else if (sql.contains("GROUP BY")) {
+                    replacement += " GROUP BY";
+                } else if (sql.contains("LIMIT")) {
+                    replacement += " LIMIT";
+                }
+                
                 sql = sql.replaceAll(
                     "WHERE\\s+(.*?)(?:ORDER\\s+BY|GROUP\\s+BY|LIMIT|$)", 
-                    "WHERE " + processedWhere + "$1"
+                    replacement
                 );
             }
         }
