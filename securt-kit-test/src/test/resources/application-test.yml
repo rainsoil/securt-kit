@@ -1,0 +1,65 @@
+# 测试环境配置
+spring:
+  datasource:
+    # 使用H2内存数据库进行测试
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+    
+  h2:
+    console:
+      enabled: true
+      
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# MyBatis Plus配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      table-prefix: ""
+  mapper-locations: classpath*:mapper/**/*.xml
+
+# 安全工具包配置
+securt-kit:
+  enabled: true
+  encryptor:
+    enabled: true
+    mode: pojo  # 测试环境使用POJO模式
+    key: test-secret-key-123
+    algorithm: des
+  desensitize:
+    enabled: true
+    default-strategy: mask_middle
+  isolation:
+    enabled: true
+    default-strategy: tenant_id
+  cache:
+    enabled: true
+    max-size: 100
+    expire-after-write: 30
+  logging:
+    enabled: true
+    level: debug
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit: DEBUG
+    com.baomidou.mybatisplus: DEBUG
+    org.springframework.jdbc: DEBUG
+    root: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n" 

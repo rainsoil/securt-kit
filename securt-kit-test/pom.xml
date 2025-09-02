@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.chu7.securtkit</groupId>
         <artifactId>securt-kit</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>securt-kit-test</artifactId>
@@ -33,12 +33,6 @@
 
     <dependencies>
         <!-- 项目核心模块 -->
-        <dependency>
-            <groupId>com.chu7.securtkit</groupId>
-            <artifactId>securt-kit-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        
         <dependency>
             <groupId>com.chu7.securtkit</groupId>
             <artifactId>securt-kit-starter</artifactId>
@@ -73,7 +67,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
+<!--            <scope>test</scope>-->
         </dependency>
 
         <!-- JSQLParser for SQL parsing -->
@@ -90,24 +84,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Test Dependencies -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
+        <!-- Test Dependencies: 使用 spring-boot-starter-test 已包含 JUnit 5 与 Mockito，无需额外声明 -->
     </dependencies>
 
     <build>
@@ -123,6 +100,14 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
                 </configuration>
             </plugin>
         </plugins>

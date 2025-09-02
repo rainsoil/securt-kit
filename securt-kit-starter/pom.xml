@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.chu7.securtkit</groupId>
         <artifactId>securt-kit</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>securt-kit-starter</artifactId>

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.chu7.securtkit.encrypt.config.EncryptAutoConfiguration
+com.chu7.securtkit.sql.config.SqlAnalyzerAutoConfiguration 
