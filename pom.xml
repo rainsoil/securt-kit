@@ -9,7 +9,6 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>securt-kit-annos</module>
         <module>securt-kit-core</module>
         <module>securt-kit-starter</module>
         <module>securt-kit-test</module>
@@ -22,7 +21,7 @@
         <spring-boot.version>2.7.18</spring-boot.version>
         <mybatis.version>3.5.13</mybatis.version>
         <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
-        <jsqlparser.version>4.5</jsqlparser.version>
+        <jsqlparser.version>4.9</jsqlparser.version>
         <hutool.version>5.8.20</hutool.version>
         <h2.version>2.2.224</h2.version>
         <junit.version>5.9.2</junit.version>
@@ -38,42 +37,42 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            
+
             <!-- MyBatis -->
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis.version}</version>
             </dependency>
-            
+
             <!-- MyBatis Plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
-            
+
             <!-- JSqlParser -->
             <dependency>
                 <groupId>com.github.jsqlparser</groupId>
                 <artifactId>jsqlparser</artifactId>
                 <version>${jsqlparser.version}</version>
             </dependency>
-            
+
             <!-- Hutool -->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-            
+
             <!-- H2 Database -->
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${h2.version}</version>
             </dependency>
-            
+
             <!-- JUnit 5 -->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
@@ -93,5 +92,44 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!--将jsqlparser，hutool打入到自己的jar包中，避免版本冲突导致的问题 -->
+            <!-- 暂时注释掉shade插件，避免开发阶段的包名重命名问题
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>com.github.jsqlparser:jsqlparser</include>
+                                    <include>cn.hutool:hutool-all</include>
+                                </includes>
+                            </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>net.sf.jsqlparser</pattern>
+                                    <shadedPattern>com.shade.net.sf.jsqlparser</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>cn.hutool</pattern>
+                                    <shadedPattern>com.shade.cn.hutool</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            -->
+        </plugins>
+    </build>
 
 </project>

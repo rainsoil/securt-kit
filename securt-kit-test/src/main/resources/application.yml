@@ -1,0 +1,79 @@
+spring:
+  profiles:
+    active: test
+  application:
+    name: securt-kit-test
+
+---
+# H2 测试环境配置
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL;INIT=CREATE SCHEMA IF NOT EXISTS PUBLIC
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+
+---
+# MySQL 环境配置
+spring:
+  profiles: mysql
+  datasource:
+    url: jdbc:mysql://192.168.50.105:3406/se_test?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: rootroot
+
+# 通用配置
+---
+# MyBatis Plus 配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath:mapper/*.xml
+
+# SecurtKit 配置
+securt-kit:
+  mode: pojo                              # 启用POJO模式
+  param-encrypt-enabled: true             # 启用参数加密
+  result-decrypt-enabled: true            # 启用结果解密
+  encryptor:
+    enabled: true                         # 启用加密功能
+    pattern-type: pojo                    # 添加这一行
+    algorithm: DES                        # 默认算法
+    secret-key: "securt-kit-test-key-123456789"  # 加密密钥（32位）
+    charset: UTF-8
+    mode: ECB
+    padding: PKCS5Padding
+  scanEntityPackage:                    # 实体类扫描包（修复属性名称）
+    - com.chu7.securtkit.test
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit: DEBUG
+    com.chu7.securtkit.test: DEBUG
+    org.springframework: INFO
+    org.mybatis: DEBUG
+    com.chu7.securtkit.interceptor: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"
+
+# 服务器配置
+server:
+  port: 8098

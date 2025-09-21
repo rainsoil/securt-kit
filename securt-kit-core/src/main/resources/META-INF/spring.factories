@@ -1,2 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.chu7.securtkit.sql.config.SqlAnalyzerAutoConfiguration 
+com.chu7.securtkit.config.EncryptorAutoConfiguration,\
+com.chu7.securtkit.config.PoJoModeAutoConfiguration

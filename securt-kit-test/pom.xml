@@ -35,7 +35,7 @@
         <!-- 项目核心模块 -->
         <dependency>
             <groupId>com.chu7.securtkit</groupId>
-            <artifactId>securt-kit-starter</artifactId>
+            <artifactId>securt-kit-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -70,11 +70,25 @@
 <!--            <scope>test</scope>-->
         </dependency>
 
+        <!-- MySQL Driver -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
         <!-- JSQLParser for SQL parsing -->
         <dependency>
             <groupId>com.github.jsqlparser</groupId>
             <artifactId>jsqlparser</artifactId>
-            <version>4.5</version>
+            <version>${jsqlparser.version}</version>
+        </dependency>
+
+        <!-- Hutool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
         </dependency>
 
         <!-- Lombok -->
@@ -101,6 +115,13 @@
                         </exclude>
                     </excludes>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -108,6 +129,14 @@
                 <version>3.1.2</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.chu7.securtkit.test.PoJoEncryptorDemo</mainClass>
                 </configuration>
             </plugin>
         </plugins>

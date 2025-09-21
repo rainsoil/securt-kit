@@ -1,0 +1,162 @@
+package com.chu7.securtkit.util;
+
+import com.chu7.securtkit.constants.SymbolConstant;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * 集合工具类
+ * 
+ * @author chu7
+ * @date 2025/5/26 11:28
+ */
+public class CollectionUtils {
+    
+    /**
+     * 判断集合是否为空
+     */
+    public static boolean isEmpty(Collection<?> collection) {
+        return collection == null || collection.isEmpty();
+    }
+    
+    /**
+     * 判断集合是否不为空
+     */
+    public static boolean isNotEmpty(Collection<?> collection) {
+        return !isEmpty(collection);
+    }
+    
+    /**
+     * 判断Map是否为空
+     */
+    public static boolean isEmpty(Map<?, ?> map) {
+        return map == null || map.isEmpty();
+    }
+    
+    /**
+     * 判断Map是否不为空
+     */
+    public static boolean isNotEmpty(Map<?, ?> map) {
+        return !isEmpty(map);
+    }
+    
+    /**
+     * 获取集合的大小，如果为null则返回0
+     */
+    public static int size(Collection<?> collection) {
+        return collection != null ? collection.size() : 0;
+    }
+    
+    /**
+     * 获取Map的大小，如果为null则返回0
+     */
+    public static int size(Map<?, ?> map) {
+        return map != null ? map.size() : 0;
+    }
+    
+    /**
+     * 判断两个List是否相等
+     *
+     * @author liutangqi
+     * @date 2025/3/4 18:06
+     * @Param [listA, listB]
+     **/
+    public static boolean equals(List<?> listA, List<?> listB) {
+        return listA.size() == listB.size() && listA.containsAll(listB);
+    }
+
+    /**
+     * 判断两个Map是否相等（只判断一层）
+     *
+     * @author liutangqi
+     * @date 2025/3/4 18:18
+     * @Param [mapA, mapB]
+     **/
+    public static boolean equals(Map<?, ?> mapA, Map<?, ?> mapB) {
+        Set<?> keySetA = mapA.keySet();
+        Set<?> keySetB = mapB.keySet();
+        if (keySetA.size() != keySetB.size()) {
+            return false;
+        }
+
+        for (Object key : keySetA) {
+            if (!Objects.equals(mapA.get(key), mapB.get(key))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * 在原有的List中，每个间隔插入分隔符
+     *
+     * @author liutangqi
+     * @date 2025/5/30 16:44
+     * @Param [lists, separator]
+     **/
+    public static <T> List<T> join(List<T> lists, T separator) {
+        List<T> res = new java.util.ArrayList<>();
+        for (int i = 0; i < lists.size(); i++) {
+            res.add(lists.get(i));
+            if (i != lists.size() - 1) {
+                res.add(separator);
+            }
+        }
+        return res;
+    }
+
+    /**
+     * 忽略 ` 和 " ，从map中获取值
+     *
+     * @author liutangqi
+     * @date 2025/5/30 11:24
+     * @Param [map, key]
+     **/
+    public static <T> T getValueIgnoreFloat(Map<String, T> map, String key) {
+        T value = map.get(key);
+        //1.找到了直接返回
+        if (value != null) {
+            return value;
+        }
+
+        //2.去除 ` 和 " 进行查询
+        if (key.startsWith(SymbolConstant.FLOAT)) {
+            return map.get(StringUtils.trim(key, SymbolConstant.FLOAT));
+        }
+        if (key.startsWith(SymbolConstant.DOUBLE_QUOTES)) {
+            return map.get(StringUtils.trim(key, SymbolConstant.DOUBLE_QUOTES));
+        }
+
+        //3.按照添加` " 的方式去查询
+        if (value == null) {
+            value = map.get(SymbolConstant.FLOAT + key.trim() + SymbolConstant.FLOAT);
+        }
+        if (value == null) {
+            value = map.get(SymbolConstant.DOUBLE_QUOTES + key.trim() + SymbolConstant.DOUBLE_QUOTES);
+        }
+        return value;
+    }
+
+    /**
+     * 从Map中获取值，获取成功后，再将该值给移除掉
+     *
+     * @author liutangqi
+     * @date 2025/7/18 10:58
+     * @Param [map, key]
+     **/
+    public static <K, V> V getAndRemove(Map<K, V> map, K key) {
+        //1.先获取值
+        V res = map.get(key);
+
+        //2.判断Map中是否包含此key，包含就移除（注意：这里不能判断上面get的值是否为null来作为移除依据，因为Map中可以存null值作为value）
+        if (map.containsKey(key)) {
+            map.remove(key);
+        }
+        return res;
+    }
+}
