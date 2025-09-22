@@ -1,0 +1,50 @@
+# 简化配置示例 - 展示新的配置结构
+securt-kit:
+  # 扫描实体类包路径
+  scan-entity-package:
+    - com.chu7.securtkit.test.entity
+  
+  # 字段加密配置
+  field-encryptor:
+    enabled: true
+    # 默认加密策略
+    default-strategy: com.chu7.securtkit.encryptor.pojo.DefaultPoJoFieldEncryptorPattern
+    
+    # 表字段加密配置
+    tables:
+      test_user:
+        enabled: true
+        fields:
+          # 使用指定策略
+          password:
+            strategy: com.chu7.securtkit.encryptor.pojo.Md5PoJoFieldEncryptorStrategy
+          
+          # 使用默认策略（不配置strategy）
+          phone:
+            # 空配置，将使用default-strategy
+          
+          # age字段不配置，表示不加密
+
+  # 加密器配置
+  encryptor:
+    pattern-type: pojo
+    secret-key: "securt-kit-simple-config-key-12345678"
+
+# 数据库配置
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: SA
+    password: 
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit: DEBUG
+    org.springframework: INFO

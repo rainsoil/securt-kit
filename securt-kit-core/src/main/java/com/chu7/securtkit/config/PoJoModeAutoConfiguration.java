@@ -63,17 +63,27 @@ public class PoJoModeAutoConfiguration {
             log.warn("【securt-kit】未找到加密策略或策略为空");
         }
         
-        // 2. 初始化表字段缓存 - 修复属性名
+        // 2. 初始化表字段缓存 - 支持注解和配置文件混合模式
         log.info("【securt-kit】准备初始化表字段缓存");
         if (securtKitProperties != null) {
             log.info("【securt-kit】securtKitProperties不为空");
+            
+            // 2.1 先通过注解扫描初始化
             List<String> scanPackages = securtKitProperties.getScanEntityPackage();
             log.info("【securt-kit】scanPackages: {}", scanPackages);
             if (scanPackages != null && !scanPackages.isEmpty()) {
                 TableCache.initByPackages(scanPackages);
-                log.info("【securt-kit】初始化表字段缓存完成，扫描包: {}", scanPackages);
+                log.info("【securt-kit】注解方式初始化表字段缓存完成，扫描包: {}", scanPackages);
             } else {
-                log.warn("【securt-kit】未配置扫描包路径，跳过表字段缓存初始化");
+                log.warn("【securt-kit】未配置扫描包路径，跳过注解方式初始化");
+            }
+            
+            // 2.2 再通过配置文件补充或覆盖
+            if (securtKitProperties.getFieldEncryptor() != null && securtKitProperties.getFieldEncryptor().isEnabled()) {
+                TableCache.initByConfig(securtKitProperties.getFieldEncryptor());
+                log.info("【securt-kit】配置文件方式初始化表字段缓存完成");
+            } else {
+                log.info("【securt-kit】字段加密配置未启用，跳过配置文件初始化");
             }
         } else {
             log.warn("【securt-kit】securtKitProperties为空");
@@ -85,8 +95,8 @@ public class PoJoModeAutoConfiguration {
     /**
      * 创建加密策略实例列表，避免循环依赖
      */
-    private List<FieldEncryptorStrategy> createEncryptorStrategies() {
-        List<FieldEncryptorStrategy> strategies = new ArrayList<>();
+    private List<FieldEncryptorStrategy<?>> createEncryptorStrategies() {
+        List<FieldEncryptorStrategy<?>> strategies = new ArrayList<>();
         
         // 直接创建策略实例，避免循环依赖
         strategies.add(new DefaultPoJoFieldEncryptorPattern(encryptorProperties));

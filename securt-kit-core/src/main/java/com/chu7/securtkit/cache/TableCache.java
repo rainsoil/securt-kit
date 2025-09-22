@@ -68,6 +68,69 @@ public class TableCache {
     }
 
     /**
+     * 通过配置文件初始化表缓存
+     *
+     * @param fieldEncryptorProperties 字段加密配置属性
+     */
+    public static void initByConfig(com.chu7.securtkit.config.properties.FieldEncryptorProperties fieldEncryptorProperties) {
+        if (fieldEncryptorProperties == null || !fieldEncryptorProperties.isEnabled()) {
+            log.warn("【securt-kit】字段加密配置未启用，跳过配置文件初始化");
+            return;
+        }
+        
+        Map<String, com.chu7.securtkit.config.properties.FieldEncryptorProperties.TableConfig> tables = 
+            fieldEncryptorProperties.getTables();
+        
+        if (tables == null || tables.isEmpty()) {
+            log.warn("【securt-kit】未配置表字段加密信息，跳过配置文件初始化");
+            return;
+        }
+        
+        String defaultStrategy = fieldEncryptorProperties.getDefaultStrategy();
+        log.info("【securt-kit】默认加密策略: {}", defaultStrategy);
+        
+        for (Map.Entry<String, com.chu7.securtkit.config.properties.FieldEncryptorProperties.TableConfig> tableEntry : tables.entrySet()) {
+            String tableName = tableEntry.getKey().toLowerCase();
+            com.chu7.securtkit.config.properties.FieldEncryptorProperties.TableConfig tableConfig = tableEntry.getValue();
+            
+            if (!tableConfig.isEnabled()) {
+                log.info("【securt-kit】表 {} 的字段加密已禁用", tableName);
+                continue;
+            }
+            
+            Map<String, com.chu7.securtkit.config.properties.FieldEncryptorProperties.FieldConfig> fields = 
+                tableConfig.getFields();
+            
+            if (fields == null || fields.isEmpty()) {
+                log.info("【securt-kit】表 {} 未配置字段加密信息", tableName);
+                continue;
+            }
+            
+            for (Map.Entry<String, com.chu7.securtkit.config.properties.FieldEncryptorProperties.FieldConfig> fieldEntry : fields.entrySet()) {
+                String fieldName = fieldEntry.getKey().toLowerCase();
+                com.chu7.securtkit.config.properties.FieldEncryptorProperties.FieldConfig fieldConfig = fieldEntry.getValue();
+                
+                // 使用字段配置的策略，如果为空则使用默认策略
+                String strategy = fieldConfig.getStrategy();
+                if (strategy == null || strategy.trim().isEmpty()) {
+                    strategy = defaultStrategy;
+                }
+                
+                // 创建FieldEncryptor注解对象
+                FieldEncryptor fieldEncryptor = createFieldEncryptorFromConfig(strategy, fieldConfig.getParams());
+                if (fieldEncryptor != null) {
+                    TABLE_FIELD_ENCRYPT_INFO.computeIfAbsent(tableName, k -> new HashMap<>())
+                            .put(fieldName, fieldEncryptor);
+                    FIELD_ENCRYPT_TABLE.add(tableName);
+                    log.info("【securt-kit】配置文件添加字段加密: {}.{} -> {}", tableName, fieldName, strategy);
+                }
+            }
+        }
+        
+        log.info("【securt-kit】配置文件表缓存初始化完成，共缓存 {} 张表", TABLE_FIELD_ENCRYPT_INFO.size());
+    }
+
+    /**
      * 处理单个实体类
      */
     private static void processEntityClass(Class<?> entityClass) {
@@ -165,6 +228,30 @@ public class TableCache {
     public static FieldEncryptor getFieldEncryptor(String tableName, String columnName) {
         Map<String, FieldEncryptor> fieldMap = getTableFieldEncryptInfo(tableName);
         return fieldMap.get(columnName.toLowerCase());
+    }
+
+    /**
+     * 从配置文件创建FieldEncryptor注解对象
+     */
+    @SuppressWarnings("unchecked")
+    private static FieldEncryptor createFieldEncryptorFromConfig(String strategy, Map<String, Object> params) {
+        try {
+            Class<?> strategyClass = Class.forName(strategy);
+            return new FieldEncryptor() {
+                @Override
+                public Class<? extends com.chu7.securtkit.strategy.FieldEncryptorStrategy<?>> value() {
+                    return (Class<? extends com.chu7.securtkit.strategy.FieldEncryptorStrategy<?>>) strategyClass;
+                }
+                
+                @Override
+                public Class<? extends java.lang.annotation.Annotation> annotationType() {
+                    return FieldEncryptor.class;
+                }
+            };
+        } catch (ClassNotFoundException e) {
+            log.error("【securt-kit】找不到加密策略类: {}", strategy, e);
+            return null;
+        }
     }
 
     /**

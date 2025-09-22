@@ -1,0 +1,77 @@
+# 混合配置示例 - 注解 + 配置文件
+securt-kit:
+  # 扫描实体类包路径（注解方式）
+  scan-entity-package:
+    - com.chu7.securtkit.test.entity
+  
+  # 字段加密配置（配置文件方式）
+  field-encryptor:
+    enabled: true
+    # 默认加密策略（当字段未配置时使用）
+    default-strategy: com.chu7.securtkit.encryptor.pojo.DefaultPoJoFieldEncryptorPattern
+    
+    # 表字段加密配置
+    tables:
+      # test_user表的字段加密配置
+      test_user:
+        enabled: true
+        fields:
+          # 覆盖注解配置 - 将password字段改为AES加密
+          password:
+            strategy: com.chu7.securtkit.encryptor.pojo.AesPoJoFieldEncryptorStrategy
+            params:
+              key: "custom-aes-key-1234567890123456"
+          
+          # 新增字段加密 - 为username字段添加Base64编码
+          username:
+            strategy: com.chu7.securtkit.encryptor.pojo.Base64PoJoFieldEncryptorStrategy
+          
+          # 使用默认策略的字段（不配置strategy）
+          phone:
+            # 不配置strategy，将使用default-strategy
+          
+          # age字段不配置，表示不加密
+      
+      # user_profile表的字段加密配置
+      user_profile:
+        enabled: true
+        fields:
+          real_name:
+            strategy: com.chu7.securtkit.encryptor.pojo.DefaultPoJoFieldEncryptorPattern
+          
+          address:
+            strategy: com.chu7.securtkit.encryptor.pojo.AesPoJoFieldEncryptorStrategy
+            params:
+              key: "profile-address-key"
+          
+          # 使用默认策略
+          phone:
+            # 不配置strategy，将使用default-strategy
+
+  # 加密器配置
+  encryptor:
+    pattern-type: pojo
+    secret-key: "securt-kit-mixed-config-key-12345678"
+    algorithm: DES
+    charset: UTF-8
+    mode: ECB
+    padding: PKCS5Padding
+
+# 数据库配置
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: SA
+    password: 
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit: DEBUG
+    org.springframework: INFO

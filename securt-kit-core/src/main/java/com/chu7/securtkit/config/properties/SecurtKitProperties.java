@@ -33,4 +33,9 @@ public class SecurtKitProperties {
      * 加解密相关的配置
      */
     private EncryptorProperties encryptor = new EncryptorProperties();
+    
+    /**
+     * 字段加密配置
+     */
+    private FieldEncryptorProperties fieldEncryptor = new FieldEncryptorProperties();
 }
