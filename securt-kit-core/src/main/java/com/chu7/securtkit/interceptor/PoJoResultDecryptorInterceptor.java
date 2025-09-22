@@ -187,10 +187,42 @@ public class PoJoResultDecryptorInterceptor implements Interceptor, BeanPostProc
     private FieldEncryptor getFieldEncryptorByFieldName(String fieldName, List<FieldEncryptorInfoDto> fieldInfos) {
         //从所有字段中查到这个字段的信息（理论上只会存在一个）
         return fieldInfos.stream()
-                .filter(f -> Objects.equals(fieldName, f.getColumnName())
-                        || Objects.equals(fieldName, StrUtil.toCamelCase(f.getColumnName()))
-                        || Objects.equals(fieldName, f.getColumnName().replaceAll(SymbolConstant.DOUBLE_QUOTES, SymbolConstant.BLANK))
-                        || Objects.equals(fieldName, f.getColumnName().replaceAll(SymbolConstant.FLOAT, SymbolConstant.BLANK)))
+                .filter(f -> {
+                    String columnName = f.getColumnName();
+                    String sourceColumn = f.getSourceColumn();
+                    
+                    // 基本匹配
+                    boolean basicMatch = Objects.equals(fieldName, columnName)
+                            || Objects.equals(fieldName, StrUtil.toCamelCase(columnName))
+                            || Objects.equals(fieldName, sourceColumn)
+                            || Objects.equals(fieldName, StrUtil.toCamelCase(sourceColumn));
+                    
+                    if (basicMatch) {
+                        return true;
+                    }
+                    
+                    // 字符串替换匹配（需要检查null）
+                    if (columnName != null) {
+                        boolean replaceMatch = Objects.equals(fieldName, columnName.replaceAll(SymbolConstant.DOUBLE_QUOTES, SymbolConstant.BLANK))
+                                || Objects.equals(fieldName, columnName.replaceAll(SymbolConstant.FLOAT, SymbolConstant.BLANK));
+                        if (replaceMatch) {
+                            return true;
+                        }
+                    }
+                    
+                    // 大小写不敏感匹配（需要检查null）
+                    if (columnName != null && sourceColumn != null) {
+                        boolean caseInsensitiveMatch = Objects.equals(fieldName.toUpperCase(), columnName.toUpperCase())
+                                || Objects.equals(fieldName.toUpperCase(), sourceColumn.toUpperCase())
+                                || Objects.equals(fieldName.toLowerCase(), columnName.toLowerCase())
+                                || Objects.equals(fieldName.toLowerCase(), sourceColumn.toLowerCase());
+                        if (caseInsensitiveMatch) {
+                            return true;
+                        }
+                    }
+                    
+                    return false;
+                })
                 .findAny()
                 .map(FieldEncryptorInfoDto::getFieldEncryptor)
                 .orElse(null);

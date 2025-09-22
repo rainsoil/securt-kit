@@ -10,6 +10,7 @@
 //import org.springframework.stereotype.Component;
 //
 //import java.util.List;
+//import java.util.Map;
 //
 ///**
 // * POJO模式加密演示类
@@ -44,7 +45,7 @@
 //        System.out.println("========================\n");
 //
 //        // 演示基本功能
-////        demonstrateBasicFunctionality();
+//        demonstrateBasicFunctionality();
 ////
 ////        // 演示批量操作
 ////        demonstrateBatchOperations();
@@ -53,7 +54,10 @@
 ////        demonstrateConditionalQueries();
 ////
 ////        // 演示更新操作
-//        demonstrateUpdateOperations();
+////        demonstrateUpdateOperations();
+//
+//        // 复杂SQL测试
+//        testComplexSql();
 //
 //        System.out.println("=== POJO模式加密演示结束 ===");
 //    }
@@ -230,5 +234,156 @@
 //        // 由于加密策略是通过注解配置的，这里主要展示数据流程
 //
 //        System.out.println("✓ 加密策略演示完成");
+//    }
+//
+//    /**
+//     * 复杂SQL测试方法
+//     */
+//    public void testComplexSql() {
+//        System.out.println("\n=== 复杂SQL加密测试 ===");
+//
+//        try {
+//            // 测试1: 带子查询的复杂UPDATE
+////            testComplexUpdate();
+//
+////            // 测试2: 带聚合函数的复杂SELECT
+////            testComplexSelect();
+////
+////            // 测试3: 带别名的复杂查询
+////            testComplexSelectWithAlias();
+////
+////            // 测试4: 分页查询
+//            testComplexSelectWithLimit();
+////
+//            System.out.println("✓ 所有复杂SQL测试完成");
+//
+//        } catch (Exception e) {
+//            System.err.println("复杂SQL测试过程中出现错误: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    /**
+//     * 测试带子查询的复杂UPDATE
+//     */
+//    private void testComplexUpdate() {
+//        System.out.println("\n--- 测试带子查询的复杂UPDATE ---");
+//
+//        // 先创建一个测试用户
+//        User user = userService.createUser("复杂UPDATE测试", "123456", "13900139000", "complex_update@example.com", "110101199001019999", 30);
+//        System.out.println("创建测试用户ID: " + user.getId());
+//
+//        // 使用复杂子查询更新
+//        int updateResult = userMapper.updateUserWithSubquery(
+//            user.getId(),
+//            "复杂UPDATE测试",
+//            "13900139001",
+//            "updated_complex@example.com",
+//            "110101199001019998"
+//        );
+//        System.out.println("更新影响行数: " + updateResult);
+//
+//        if (updateResult > 0) {
+//            // 验证更新后的数据
+//            User updatedUser = userMapper.selectById(user.getId());
+//            System.out.println("更新后数据验证:");
+//            System.out.println("- 手机号: " + updatedUser.getPhone());
+//            System.out.println("- 邮箱: " + updatedUser.getEmail());
+//            System.out.println("- 身份证: " + updatedUser.getIdCard());
+//            System.out.println("✓ 复杂UPDATE测试成功");
+//        } else {
+//            System.out.println("❌ 复杂UPDATE测试失败 - 没有更新任何记录");
+//        }
+//    }
+//
+//    /**
+//     * 测试带聚合函数的复杂SELECT
+//     */
+//    private void testComplexSelect() {
+//        System.out.println("\n--- 测试带聚合函数的复杂SELECT ---");
+//
+//        // 创建一些测试数据
+//        userService.createUser("聚合测试1", "123456", "13800138001", "agg1@example.com", "110101199001011001", 25);
+//        userService.createUser("聚合测试2", "123456", "13800138002", "agg2@example.com", "110101199001011002", 30);
+//        userService.createUser("聚合测试3", "123456", "13800138003", "agg3@example.com", "110101199001011003", 35);
+//
+//        // 查询用户统计信息
+//        Map<String, Object> stats = userMapper.selectUserStatistics();
+//        System.out.println("用户统计信息:");
+//        System.out.println("- 总用户数: " + stats.get("total_users"));
+//        System.out.println("- 平均年龄: " + stats.get("avg_age"));
+//        System.out.println("- 最大年龄: " + stats.get("max_age"));
+//        System.out.println("- 最小年龄: " + stats.get("min_age"));
+//        System.out.println("- 唯一手机号数量: " + stats.get("unique_phones"));
+//
+//        // 按年龄分组查询
+//        List<Map<String, Object>> ageGroups = userMapper.selectUsersByAgeGroup();
+//        System.out.println("年龄分组统计:");
+//        for (Map<String, Object> group : ageGroups) {
+//            System.out.println("- " + group.get("age_group") + ": " + group.get("user_count") + "人");
+//        }
+//
+//        System.out.println("✓ 复杂SELECT测试成功");
+//    }
+//
+//    /**
+//     * 测试带别名的复杂查询
+//     */
+//    private void testComplexSelectWithAlias() {
+//        System.out.println("\n--- 测试带别名的复杂查询 ---");
+//
+//        // 创建测试数据
+//        userService.createUser("别名测试", "123456", "13700137001", "alias@example.com", "110101199001011601", 28);
+//
+//        // 使用别名查询
+//        List<Map<String, Object>> usersWithAlias = userMapper.selectUsersWithAlias(20);
+//        System.out.println("带别名的查询结果 (年龄>20的用户):");
+//
+//        int count = 0;
+//        for (Map<String, Object> userMap : usersWithAlias) {
+//            count++;
+//            System.out.println("用户" + count + ":");
+//            System.out.println("  - ID: " + userMap.get("user_id"));
+//            System.out.println("  - 姓名: " + userMap.get("user_name"));
+//            System.out.println("  - 手机: " + userMap.get("user_phone"));
+//            System.out.println("  - 邮箱: " + userMap.get("user_email"));
+//            System.out.println("  - 身份证: " + userMap.get("user_id_card"));
+//            System.out.println("  - 年龄: " + userMap.get("user_age"));
+//
+//            if (count >= 5) { // 只显示前5个
+//                System.out.println("  ... (显示前5个用户)");
+//                break;
+//            }
+//        }
+//
+//        System.out.println("总共查询到 " + usersWithAlias.size() + " 个用户");
+//        System.out.println("✓ 带别名的复杂查询测试成功");
+//    }
+//
+//    /**
+//     * 测试分页查询
+//     */
+//    private void testComplexSelectWithLimit() {
+//        System.out.println("\n--- 测试分页查询 ---");
+//
+//        // 创建多个测试用户
+//        for (int i = 0; i < 5; i++) {
+//            userService.createUser("分页测试" + i, "123456", "1320013200" + i, "page" + i + "@example.com", "11010119900101150" + i, 20 + i);
+//        }
+//
+//        // 分页查询（第一页，每页3条）
+//        List<User> pagedUsers = userMapper.selectUsersWithLimit(0, 3);
+//        System.out.println("分页查询结果（第一页，每页3条）:");
+//
+//        for (int i = 0; i < pagedUsers.size(); i++) {
+//            User user = pagedUsers.get(i);
+//            System.out.println("第" + (i+1) + "条:");
+//            System.out.println("  - 姓名: " + user.getUsername());
+//            System.out.println("  - 年龄: " + user.getAge());
+//            System.out.println("  - 手机: " + user.getPhone());
+//            System.out.println("  - 邮箱: " + user.getEmail());
+//        }
+//
+//        System.out.println("✓ 分页查询测试成功");
 //    }
 //}

@@ -18,8 +18,10 @@ import com.chu7.securtkit.visitor.PoJoEncrtptorStatementVisitor;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.statement.Statement;
+import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.DefaultReflectorFactory;
@@ -45,7 +47,8 @@ import java.util.*;
  */
 @FieldInterceptorOrder(InterceptorOrderConstant.ENCRYPTOR)
 @Intercepts({
-    @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})
+    @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class}),
+    @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class})
 })
 @Slf4j
 public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProcessor {
@@ -67,6 +70,22 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
      **/
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
+        Object target = invocation.getTarget();
+        
+        // 判断拦截的是StatementHandler还是Executor
+        if (target instanceof StatementHandler) {
+            return interceptStatementHandler(invocation);
+        } else if (target instanceof Executor) {
+            return interceptExecutor(invocation);
+        }
+        
+        return invocation.proceed();
+    }
+    
+    /**
+     * 拦截StatementHandler.prepare方法
+     */
+    private Object interceptStatementHandler(Invocation invocation) throws Throwable {
         //1.获取基础信息
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
         BoundSql boundSql = statementHandler.getBoundSql();
@@ -81,19 +100,226 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
             return invocation.proceed();
         }
 
+        //3.检查是否是批量操作，如果是则跳过StatementHandler处理，避免重复加密
+        if (isBatchOperation(originalSql)) {
+            log.info("【securt-kit】检测到批量操作，跳过StatementHandler处理，避免重复加密");
+            return invocation.proceed();
+        }
+
         log.info("【securt-kit】SQL包含需要加密的表，开始加密处理");
 
-        //3.解析sql,获取入参和响应对应的表字段关系
+        //4.解析sql,获取入参和响应对应的表字段关系
         Pair<Map<String, ColumnTableDto>, List<FieldEncryptorInfoDto>> pair = parseSql(originalSql);
 
-        //4.处理入参
+        //5.处理入参
         disposeParam(boundSql, pair);
 
-        //5.执行sql
+        //6.执行sql
         Object proceed = invocation.proceed();
 
-        //6.返回结果
+        //7.返回结果
         return proceed;
+    }
+    
+    /**
+     * 判断是否是批量操作
+     */
+    private boolean isBatchOperation(String sql) {
+        String upperSql = sql.toUpperCase();
+        
+        // 对于MyBatis-Plus的批量操作，我们通过检查SQL格式来判断
+        // MyBatis-Plus批量操作的SQL特征：
+        // 1. 包含INSERT/UPDATE/DELETE
+        // 2. 包含多个占位符(?)
+        // 3. 格式规整，通常有换行和缩进
+        if (upperSql.contains("INSERT") || upperSql.contains("UPDATE") || upperSql.contains("DELETE")) {
+            // 检查是否包含多个占位符（通常批量操作会有8个或更多占位符）
+            int placeholderCount = 0;
+            int index = 0;
+            while ((index = sql.indexOf("?", index)) != -1) {
+                placeholderCount++;
+                index += 1;
+            }
+            // 如果占位符数量较多（>=8），且SQL包含换行，可能是MyBatis-Plus的批量操作
+            if (placeholderCount >= 8 && sql.contains("\n")) {
+                return true;
+            }
+            
+            // 检查SQL是否包含多个VALUES子句（真正的批量INSERT）
+            // 真正的批量INSERT会有多个VALUES子句，如：INSERT INTO table VALUES (...), (...), (...)
+            if (upperSql.contains("INSERT") && upperSql.contains("VALUES")) {
+                // 计算VALUES子句的数量，如果有多个逗号分隔的VALUES，说明是批量操作
+                int valuesCount = 0;
+                index = 0;
+                while ((index = upperSql.indexOf("VALUES", index)) != -1) {
+                    valuesCount++;
+                    index += 6; // "VALUES".length()
+                }
+                // 如果有多个VALUES子句，说明是真正的批量操作
+                return valuesCount > 1;
+            }
+        }
+        
+        return false;
+    }
+    
+    /**
+     * 拦截Executor.update方法，处理批量操作
+     */
+    private Object interceptExecutor(Invocation invocation) throws Throwable {
+        MappedStatement mappedStatement = (MappedStatement) invocation.getArgs()[0];
+        Object parameter = invocation.getArgs()[1];
+        
+        // 获取SQL
+        BoundSql boundSql = mappedStatement.getBoundSql(parameter);
+        String originalSql = boundSql.getSql();
+        
+        log.info("【securt-kit】Executor.update被触发，SQL: {}", originalSql);
+
+        //当前sql如果肯定不需要加解密，则不解析sql，直接返回
+        if (StringUtils.notExist(originalSql, TableCache.getFieldEncryptTable())) {
+            return invocation.proceed();
+        }
+
+        // 检查是否是真正的批量操作（不是单条操作）
+        if (isBatchOperation(originalSql)) {
+            log.info("【securt-kit】批量操作需要加密，开始处理参数");
+
+            //解析sql,获取入参和响应对应的表字段关系
+            Pair<Map<String, ColumnTableDto>, List<FieldEncryptorInfoDto>> pair = parseSql(originalSql);
+
+            //处理当前批次的参数 - 直接修改parameter对象
+            disposeParamForExecutor(parameter, pair);
+        } else {
+            log.info("【securt-kit】单条操作，跳过Executor处理，由StatementHandler处理");
+        }
+
+        //执行sql
+        return invocation.proceed();
+    }
+
+    /**
+     * 为Executor.update处理参数，直接修改parameter对象
+     */
+    private void disposeParamForExecutor(Object parameter, Pair<Map<String, ColumnTableDto>, List<FieldEncryptorInfoDto>> pair) {
+        if (parameter == null) {
+            return;
+        }
+        
+        // 如果是基本类型，直接返回
+        if (FieldConstant.FUNDAMENTAL.contains(parameter.getClass())) {
+            return;
+        }
+        
+        // 获取需要加密的字段映射
+        Map<String, ColumnTableDto> placeholderColumnTableMap = pair.getKey();
+        
+        // 处理不同类型的参数
+        Object targetObject = parameter;
+        
+        // 如果是Map类型（MyBatis-Plus批量操作），尝试获取实体对象
+        if (parameter instanceof Map) {
+            Map<?, ?> paramMap = (Map<?, ?>) parameter;
+            // 查找实体对象，可能是et、entity等key
+            for (Object key : paramMap.keySet()) {
+                Object value = paramMap.get(key);
+                if (value != null && !FieldConstant.FUNDAMENTAL.contains(value.getClass())) {
+                    // 检查是否是实体对象（不是条件构造器）
+                    if (!isWrapperClass(value.getClass())) {
+                        targetObject = value;
+                        log.info("【securt-kit】从Map参数中提取实体对象: {} -> {}", key, value.getClass().getSimpleName());
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // 如果没有找到实体对象，跳过处理
+        if (targetObject == null) {
+            log.info("【securt-kit】未找到实体对象，跳过Executor参数加密处理");
+            return;
+        }
+        
+        // 使用反射直接修改targetObject对象的字段值
+        MetaObject metaObject = MetaObject.forObject(targetObject, objectFactory, objectWrapperFactory, reflectorFactory);
+        
+        for (Map.Entry<String, ColumnTableDto> entry : placeholderColumnTableMap.entrySet()) {
+            String placeholderKey = entry.getKey();
+            ColumnTableDto columnTableDto = entry.getValue();
+            
+            // 获取数据库字段名
+            String dbFieldName = columnTableDto.getSourceColumn();
+            if (StringUtils.isBlank(dbFieldName)) {
+                continue;
+            }
+            
+            // 将数据库字段名转换为Java字段名（下划线转驼峰）
+            String javaFieldName = convertToCamelCase(dbFieldName);
+            
+            try {
+                // 获取字段值
+                Object fieldValue = metaObject.getValue(javaFieldName);
+                if (fieldValue == null || !(fieldValue instanceof String)) {
+                    continue;
+                }
+                
+                // 检查是否需要加密
+                FieldEncryptor fieldEncryptor = JsqlparserUtil.parseFieldEncryptor(columnTableDto);
+                if (fieldEncryptor != null) {
+                    String ciphertext = EncryptorInstanceCache.<String>getInstance(fieldEncryptor.value()).encryption((String) fieldValue);
+                    log.info("【securt-kit】Executor加密字段 {}: {} -> {}", javaFieldName, fieldValue, ciphertext);
+                    metaObject.setValue(javaFieldName, ciphertext);
+                }
+            } catch (Exception e) {
+                // 如果获取字段值失败，记录日志并继续处理其他字段
+                log.warn("【securt-kit】获取字段值失败: {} -> {}", javaFieldName, e.getMessage());
+                continue;
+            }
+        }
+    }
+    
+    /**
+     * 判断是否是MyBatis-Plus的条件构造器类
+     */
+    private boolean isWrapperClass(Class<?> clazz) {
+        if (clazz == null) {
+            return false;
+        }
+        
+        String className = clazz.getName();
+        return className.contains("LambdaUpdateWrapper") || 
+               className.contains("LambdaQueryWrapper") ||
+               className.contains("UpdateWrapper") ||
+               className.contains("QueryWrapper") ||
+               className.contains("AbstractWrapper");
+    }
+    
+    /**
+     * 将下划线命名转换为驼峰命名
+     */
+    private String convertToCamelCase(String underscoreName) {
+        if (StringUtils.isBlank(underscoreName)) {
+            return underscoreName;
+        }
+        
+        StringBuilder result = new StringBuilder();
+        boolean nextUpperCase = false;
+        
+        for (int i = 0; i < underscoreName.length(); i++) {
+            char c = underscoreName.charAt(i);
+            if (c == '_') {
+                nextUpperCase = true;
+            } else {
+                if (nextUpperCase) {
+                    result.append(Character.toUpperCase(c));
+                    nextUpperCase = false;
+                } else {
+                    result.append(c);
+                }
+            }
+        }
+        
+        return result.toString();
     }
 
     /**
