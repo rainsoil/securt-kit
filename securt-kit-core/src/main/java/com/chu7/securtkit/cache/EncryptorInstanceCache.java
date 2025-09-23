@@ -1,19 +1,11 @@
 package com.chu7.securtkit.cache;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.chu7.securtkit.annotation.FieldEncryptor;
-import com.chu7.securtkit.annotation.DefaultStrategy;
 import com.chu7.securtkit.dto.ClasssCacheKey;
 import com.chu7.securtkit.strategy.FieldEncryptorStrategy;
 import com.chu7.securtkit.strategy.DefaultStrategyBase;
-import com.chu7.securtkit.util.ReflectUtils;
 import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * 加解密相关策略的缓存
@@ -39,14 +31,18 @@ public class EncryptorInstanceCache {
      * @date 2025/6/24 11:12
      * @param strategies 策略列表
      */
-    public void init(List<FieldEncryptorStrategy> strategies) {
+    public void init(List<FieldEncryptorStrategy<?>> strategies) {
         //1.实例化默认策略
-        DefaultStrategyBase.EncryptorBeanStrategy beanStrategy = new DefaultStrategyBase.EncryptorBeanStrategy(strategies);
+        @SuppressWarnings("unchecked")
+        List<FieldEncryptorStrategy> rawStrategies = (List<FieldEncryptorStrategy>) (List<?>) strategies;
+        DefaultStrategyBase.EncryptorBeanStrategy beanStrategy = new DefaultStrategyBase.EncryptorBeanStrategy(rawStrategies);
         INSTANCE_MAP.put(ClasssCacheKey.buildKey(DefaultStrategyBase.EncryptorBeanStrategy.class), beanStrategy);
 
         //2.初始化当前spring容器内的实现策略
-        for (FieldEncryptorStrategy strategy : strategies) {
-            INSTANCE_MAP.put(ClasssCacheKey.buildKey(strategy.getClass()), strategy);
+        for (FieldEncryptorStrategy<?> strategy : strategies) {
+            @SuppressWarnings("unchecked")
+            FieldEncryptorStrategy rawStrategy = (FieldEncryptorStrategy) strategy;
+            INSTANCE_MAP.put(ClasssCacheKey.buildKey(strategy.getClass()), rawStrategy);
         }
     }
 

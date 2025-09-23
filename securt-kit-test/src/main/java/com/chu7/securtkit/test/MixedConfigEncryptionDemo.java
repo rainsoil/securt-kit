@@ -150,11 +150,11 @@ public class MixedConfigEncryptionDemo implements CommandLineRunner {
         log.info("--- 测试复杂查询 ---");
         
         // 测试带别名的查询
-        List<Map<String, Object>> usersWithAlias = userMapper.selectUsersWithAlias();
+        List<Map<String, Object>> usersWithAlias = userMapper.selectUsersWithAlias(18);
         log.info("带别名的查询结果: {}", usersWithAlias);
         
         // 测试统计查询
-        List<Map<String, Object>> statistics = userMapper.selectUserStatistics();
+        Map<String, Object> statistics = userMapper.selectUserStatistics();
         log.info("统计查询结果: {}", statistics);
     }
 }

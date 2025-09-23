@@ -211,6 +211,12 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
             return;
         }
         
+        // 检查pair和其内容是否为null
+        if (pair == null || pair.getKey() == null) {
+            log.warn("【securt-kit】disposeParamForExecutor: pair或其key为null，跳过参数处理");
+            return;
+        }
+        
         // 获取需要加密的字段映射
         Map<String, ColumnTableDto> placeholderColumnTableMap = pair.getKey();
         
@@ -378,6 +384,13 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
         //1.获取所有入参（这个的顺序和占位符顺序一致）
         List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
         log.info("【securt-kit】参数映射数量: {}", parameterMappings.size());
+        
+        // 检查pair和其内容是否为null
+        if (pair == null || pair.getKey() == null) {
+            log.warn("【securt-kit】pair或其key为null，跳过参数处理");
+            return;
+        }
+        
         log.info("【securt-kit】占位符映射数量: {}", pair.getKey().size());
 
         //2.将其中需要加密的字段进行加密(注意：这里只返回key value对应关系，不能现在就boundSql.setAdditionalParameter ，否则会导致 parseObj()方法中 hasAdditionalParameter()结果出错 aaa.bbb.ccc 这种方法只判断里面是否有aaa)

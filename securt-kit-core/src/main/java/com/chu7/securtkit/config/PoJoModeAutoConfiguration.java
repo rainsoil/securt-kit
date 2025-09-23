@@ -54,7 +54,7 @@ public class PoJoModeAutoConfiguration {
         System.out.println("【securt-kit】开始初始化POJO模式缓存");
         
         // 1. 初始化加密策略缓存 - 直接创建策略实例避免循环依赖
-        List<FieldEncryptorStrategy> strategies = createEncryptorStrategies();
+        List<FieldEncryptorStrategy<?>> strategies = createEncryptorStrategies();
         if (strategies != null && !strategies.isEmpty()) {
             EncryptorInstanceCache encryptorInstanceCache = new EncryptorInstanceCache();
             encryptorInstanceCache.init(strategies);

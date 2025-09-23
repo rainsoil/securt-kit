@@ -42,7 +42,7 @@ public class EncryptorAutoConfiguration {
      */
     @Bean
     @ConditionalOnProperty(name = "securt-kit.encryptor.enabled", havingValue = "true", matchIfMissing = true)
-    public EncryptorInstanceCache encryptorCache(List<FieldEncryptorStrategy> strategies) {
+    public EncryptorInstanceCache encryptorCache(List<FieldEncryptorStrategy<?>> strategies) {
         log.info("【securt-kit】注册EncryptorInstanceCache");
         EncryptorInstanceCache encryptorCache = new EncryptorInstanceCache();
         encryptorCache.init(strategies);

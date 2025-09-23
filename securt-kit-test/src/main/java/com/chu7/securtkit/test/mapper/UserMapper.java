@@ -179,4 +179,176 @@ public interface UserMapper extends BaseMapper<User> {
             "HAVING COUNT(*) > #{minCount} " +
             "ORDER BY user_count DESC")
     List<Map<String, Object>> selectPhonePrefixStatistics(@Param("minCount") int minCount);
+
+    // ========== 真实数据库复杂查询测试方法 ==========
+
+    /**
+     * 复杂条件查询
+     * 测试年龄范围、排序等复杂条件
+     */
+    @Select("SELECT " +
+            "u.id, u.username, u.password, u.phone, u.email, u.id_card, u.age, " +
+            "u.create_time, u.update_time " +
+            "FROM test_user u " +
+            "WHERE u.age BETWEEN #{minAge} AND #{maxAge} " +
+            "ORDER BY u.age DESC, u.create_time DESC")
+    List<Map<String, Object>> selectUsersWithComplexConditions(@Param("minAge") int minAge, @Param("maxAge") int maxAge);
+
+    /**
+     * 测试CASE WHEN语句
+     */
+    @Select("SELECT " +
+            "u.id, u.username, " +
+            "CASE " +
+            "  WHEN u.age < 25 THEN '青年' " +
+            "  WHEN u.age BETWEEN 25 AND 35 THEN '中年' " +
+            "  ELSE '老年' " +
+            "END as age_group, " +
+            "u.phone, u.email " +
+            "FROM test_user u " +
+            "ORDER BY u.age")
+    List<Map<String, Object>> selectUsersWithAgeGroup();
+
+    /**
+     * 测试子查询
+     */
+    @Select("SELECT " +
+            "u.id, u.username, u.phone, u.email, " +
+            "(SELECT COUNT(*) FROM test_user u2 WHERE u2.age > u.age) as younger_count " +
+            "FROM test_user u " +
+            "WHERE u.id IN (SELECT id FROM test_user WHERE age > #{minAge}) " +
+            "ORDER BY u.age")
+    List<Map<String, Object>> selectUsersWithSubQuery(@Param("minAge") int minAge);
+
+    /**
+     * 测试聚合函数
+     */
+    @Select("SELECT " +
+            "COUNT(*) as total_users, " +
+            "AVG(age) as avg_age, " +
+            "MIN(age) as min_age, " +
+            "MAX(age) as max_age, " +
+            "GROUP_CONCAT(DISTINCT phone) as all_phones " +
+            "FROM test_user")
+    Map<String, Object> selectUserAggregations();
+
+    /**
+     * 测试窗口函数
+     */
+    @Select("SELECT " +
+            "u.id, u.username, u.age, " +
+            "ROW_NUMBER() OVER (ORDER BY u.age DESC) as age_rank, " +
+            "RANK() OVER (ORDER BY u.age DESC) as age_rank_rank, " +
+            "DENSE_RANK() OVER (ORDER BY u.age DESC) as age_dense_rank " +
+            "FROM test_user u " +
+            "ORDER BY u.age DESC")
+    List<Map<String, Object>> selectUsersWithWindowFunctions();
+
+    // ========== 多表关联查询测试方法 ==========
+
+    /**
+     * 两表关联查询：用户表 + 用户详情表
+     * 测试LEFT JOIN的加密字段处理
+     */
+    @Select("SELECT " +
+            "u.id as user_id, u.username, u.password, u.phone, u.email, u.age, " +
+            "p.id as profile_id, p.real_name, p.id_card, p.gender, p.occupation " +
+            "FROM test_user u " +
+            "LEFT JOIN user_profile p ON u.id = p.user_id " +
+            "WHERE u.age > #{minAge} " +
+            "ORDER BY u.age DESC")
+    List<Map<String, Object>> selectUsersWithProfile(@Param("minAge") int minAge);
+
+    /**
+     * 三表关联查询：用户表 + 用户详情表 + 订单表
+     * 测试复杂多表关联的加密字段处理
+     */
+    @Select("SELECT " +
+            "u.id as user_id, u.username, u.password, u.phone, u.email, u.age, " +
+            "p.real_name, p.id_card, p.gender, p.occupation, " +
+            "o.id as order_id, o.order_no, o.customer_name, o.customer_phone, o.amount, o.status " +
+            "FROM test_user u " +
+            "LEFT JOIN user_profile p ON u.id = p.user_id " +
+            "LEFT JOIN user_order o ON u.id = o.user_id " +
+            "WHERE u.age BETWEEN #{minAge} AND #{maxAge} " +
+            "ORDER BY u.age DESC, o.amount DESC")
+    List<Map<String, Object>> selectUsersWithProfileAndOrders(@Param("minAge") int minAge, @Param("maxAge") int maxAge);
+
+    /**
+     * 复杂多表关联查询：带聚合和分组
+     * 测试多表关联 + 聚合函数的加密字段处理
+     */
+    @Select("SELECT " +
+            "u.id as user_id, u.username, u.phone, u.email, " +
+            "p.real_name, p.gender, " +
+            "COUNT(o.id) as order_count, " +
+            "SUM(o.amount) as total_amount, " +
+            "AVG(o.amount) as avg_amount, " +
+            "MAX(o.amount) as max_amount, " +
+            "GROUP_CONCAT(DISTINCT o.customer_name) as customer_names " +
+            "FROM test_user u " +
+            "LEFT JOIN user_profile p ON u.id = p.user_id " +
+            "LEFT JOIN user_order o ON u.id = o.user_id " +
+            "WHERE u.age > #{minAge} " +
+            "GROUP BY u.id, u.username, u.phone, u.email, p.real_name, p.gender " +
+            "HAVING COUNT(o.id) > 0 " +
+            "ORDER BY total_amount DESC")
+    List<Map<String, Object>> selectUsersWithOrderStatistics(@Param("minAge") int minAge);
+
+    /**
+     * 多表关联子查询
+     * 测试多表关联 + 子查询的加密字段处理
+     */
+    @Select("SELECT " +
+            "u.id as user_id, u.username, u.phone, u.email, " +
+            "p.real_name, p.gender, " +
+            "(SELECT COUNT(*) FROM user_order o2 WHERE o2.user_id = u.id) as order_count, " +
+            "(SELECT SUM(o3.amount) FROM user_order o3 WHERE o3.user_id = u.id) as total_amount " +
+            "FROM test_user u " +
+            "LEFT JOIN user_profile p ON u.id = p.user_id " +
+            "WHERE u.id IN (SELECT DISTINCT user_id FROM user_order WHERE amount > #{minAmount}) " +
+            "ORDER BY total_amount DESC")
+    List<Map<String, Object>> selectUsersWithOrderSubQuery(@Param("minAmount") double minAmount);
+
+    /**
+     * 多表关联CASE WHEN查询
+     * 测试多表关联 + CASE WHEN的加密字段处理
+     */
+    @Select("SELECT " +
+            "u.id as user_id, u.username, u.phone, u.email, " +
+            "p.real_name, p.gender, " +
+            "CASE " +
+            "  WHEN COUNT(o.id) = 0 THEN '无订单' " +
+            "  WHEN COUNT(o.id) BETWEEN 1 AND 3 THEN '少量订单' " +
+            "  WHEN COUNT(o.id) BETWEEN 4 AND 10 THEN '中等订单' " +
+            "  ELSE '大量订单' " +
+            "END as order_level, " +
+            "COUNT(o.id) as order_count, " +
+            "SUM(o.amount) as total_amount " +
+            "FROM test_user u " +
+            "LEFT JOIN user_profile p ON u.id = p.user_id " +
+            "LEFT JOIN user_order o ON u.id = o.user_id " +
+            "WHERE u.age > #{minAge} " +
+            "GROUP BY u.id, u.username, u.phone, u.email, p.real_name, p.gender " +
+            "ORDER BY total_amount DESC")
+    List<Map<String, Object>> selectUsersWithOrderLevel(@Param("minAge") int minAge);
+
+    /**
+     * 多表关联窗口函数查询
+     * 测试多表关联 + 窗口函数的加密字段处理
+     */
+    @Select("SELECT " +
+            "u.id as user_id, u.username, u.phone, u.email, " +
+            "p.real_name, p.gender, " +
+            "COUNT(o.id) as order_count, " +
+            "SUM(o.amount) as total_amount, " +
+            "ROW_NUMBER() OVER (ORDER BY SUM(o.amount) DESC) as amount_rank, " +
+            "RANK() OVER (ORDER BY COUNT(o.id) DESC) as order_rank " +
+            "FROM test_user u " +
+            "LEFT JOIN user_profile p ON u.id = p.user_id " +
+            "LEFT JOIN user_order o ON u.id = o.user_id " +
+            "WHERE u.age > #{minAge} " +
+            "GROUP BY u.id, u.username, u.phone, u.email, p.real_name, p.gender " +
+            "ORDER BY total_amount DESC")
+    List<Map<String, Object>> selectUsersWithOrderRanking(@Param("minAge") int minAge);
 }
