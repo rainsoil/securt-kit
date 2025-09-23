@@ -91,22 +91,21 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
         BoundSql boundSql = statementHandler.getBoundSql();
         String originalSql = boundSql.getSql();
 
-        log.info("【securt-kit】PoJoParamEncryptorInterceptor被触发，SQL: {}", originalSql);
-        log.info("【securt-kit】需要加密的表: {}", TableCache.getFieldEncryptTable());
+        log.debug("【securt-kit】PoJoParamEncryptorInterceptor被触发，SQL: {}", originalSql);
 
         //2.当前sql如果肯定不需要加解密，则不解析sql，直接返回
         if (StringUtils.notExist(originalSql, TableCache.getFieldEncryptTable())) {
-            log.info("【securt-kit】SQL不包含需要加密的表，跳过加密处理");
+            log.debug("【securt-kit】SQL不包含需要加密的表，跳过加密处理");
             return invocation.proceed();
         }
 
         //3.检查是否是批量操作，如果是则跳过StatementHandler处理，避免重复加密
         if (isBatchOperation(originalSql)) {
-            log.info("【securt-kit】检测到批量操作，跳过StatementHandler处理，避免重复加密");
+            log.debug("【securt-kit】检测到批量操作，跳过StatementHandler处理，避免重复加密");
             return invocation.proceed();
         }
 
-        log.info("【securt-kit】SQL包含需要加密的表，开始加密处理");
+        log.debug("【securt-kit】SQL包含需要加密的表，开始加密处理");
 
         //4.解析sql,获取入参和响应对应的表字段关系
         Pair<Map<String, ColumnTableDto>, List<FieldEncryptorInfoDto>> pair = parseSql(originalSql);
@@ -174,7 +173,7 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
         BoundSql boundSql = mappedStatement.getBoundSql(parameter);
         String originalSql = boundSql.getSql();
         
-        log.info("【securt-kit】Executor.update被触发，SQL: {}", originalSql);
+        log.debug("【securt-kit】Executor.update被触发，SQL: {}", originalSql);
 
         //当前sql如果肯定不需要加解密，则不解析sql，直接返回
         if (StringUtils.notExist(originalSql, TableCache.getFieldEncryptTable())) {
@@ -183,7 +182,7 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
 
         // 检查是否是真正的批量操作（不是单条操作）
         if (isBatchOperation(originalSql)) {
-            log.info("【securt-kit】批量操作需要加密，开始处理参数");
+            log.debug("【securt-kit】批量操作需要加密，开始处理参数");
 
             //解析sql,获取入参和响应对应的表字段关系
             Pair<Map<String, ColumnTableDto>, List<FieldEncryptorInfoDto>> pair = parseSql(originalSql);
@@ -191,7 +190,7 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
             //处理当前批次的参数 - 直接修改parameter对象
             disposeParamForExecutor(parameter, pair);
         } else {
-            log.info("【securt-kit】单条操作，跳过Executor处理，由StatementHandler处理");
+            log.debug("【securt-kit】单条操作，跳过Executor处理，由StatementHandler处理");
         }
 
         //执行sql
@@ -233,7 +232,7 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
                     // 检查是否是实体对象（不是条件构造器）
                     if (!isWrapperClass(value.getClass())) {
                         targetObject = value;
-                        log.info("【securt-kit】从Map参数中提取实体对象: {} -> {}", key, value.getClass().getSimpleName());
+                        log.debug("【securt-kit】从Map参数中提取实体对象: {} -> {}", key, value.getClass().getSimpleName());
                         break;
                     }
                 }
@@ -242,7 +241,7 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
         
         // 如果没有找到实体对象，跳过处理
         if (targetObject == null) {
-            log.info("【securt-kit】未找到实体对象，跳过Executor参数加密处理");
+            log.debug("【securt-kit】未找到实体对象，跳过Executor参数加密处理");
             return;
         }
         
@@ -273,7 +272,7 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
                 FieldEncryptor fieldEncryptor = JsqlparserUtil.parseFieldEncryptor(columnTableDto);
                 if (fieldEncryptor != null) {
                     String ciphertext = EncryptorInstanceCache.<String>getInstance(fieldEncryptor.value()).encryption((String) fieldValue);
-                    log.info("【securt-kit】Executor加密字段 {}: {} -> {}", javaFieldName, fieldValue, ciphertext);
+                    log.debug("【securt-kit】Executor加密字段 {}: {} -> {}", javaFieldName, fieldValue, ciphertext);
                     metaObject.setValue(javaFieldName, ciphertext);
                 }
             } catch (Exception e) {
@@ -383,7 +382,7 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
     private void disposeParam(BoundSql boundSql, Pair<Map<String, ColumnTableDto>, List<FieldEncryptorInfoDto>> pair) {
         //1.获取所有入参（这个的顺序和占位符顺序一致）
         List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
-        log.info("【securt-kit】参数映射数量: {}", parameterMappings.size());
+        log.debug("【securt-kit】参数映射数量: {}", parameterMappings.size());
         
         // 检查pair和其内容是否为null
         if (pair == null || pair.getKey() == null) {
@@ -391,7 +390,7 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
             return;
         }
         
-        log.info("【securt-kit】占位符映射数量: {}", pair.getKey().size());
+        log.debug("【securt-kit】占位符映射数量: {}", pair.getKey().size());
 
         //2.将其中需要加密的字段进行加密(注意：这里只返回key value对应关系，不能现在就boundSql.setAdditionalParameter ，否则会导致 parseObj()方法中 hasAdditionalParameter()结果出错 aaa.bbb.ccc 这种方法只判断里面是否有aaa)
         Map<String, Object> parameterValue = new HashMap<>();
@@ -401,18 +400,18 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
             String placeholderKey = FieldConstant.PLACEHOLDER + i;
             //获取当前映射字段的入参值
             Object propertyValue = parseObj(boundSql, parameterMapping);
-            log.info("【securt-kit】处理参数 {}: property={}, value={}, placeholderKey={}", 
+            log.debug("【securt-kit】处理参数 {}: property={}, value={}, placeholderKey={}", 
                     i, parameterMapping.getProperty(), propertyValue, placeholderKey);
 
             //如果需要加密的话，将加密后的值，替换原有入参
             FieldEncryptor fieldEncryptor = parseFieldEncryptor(placeholderKey, pair.getKey());
             if (propertyValue instanceof String && fieldEncryptor != null) {
                 String ciphertext = EncryptorInstanceCache.<String>getInstance(fieldEncryptor.value()).encryption((String) propertyValue);
-                log.info("【securt-kit】字段加密: {} -> {}", propertyValue, ciphertext);
+                log.debug("【securt-kit】字段加密: {} -> {}", propertyValue, ciphertext);
                 parameterValue.put(String.valueOf(i), ciphertext);
             } else {
                 //不需要加密的话，则入参还是使用旧值
-                log.info("【securt-kit】字段不加密: {} (fieldEncryptor={})", propertyValue, fieldEncryptor);
+                log.debug("【securt-kit】字段不加密: {} (fieldEncryptor={})", propertyValue, fieldEncryptor);
                 parameterValue.put(String.valueOf(i), propertyValue);
             }
         }
@@ -421,7 +420,7 @@ public class PoJoParamEncryptorInterceptor implements Interceptor, BeanPostProce
         for (int i = 0; i < parameterMappings.size(); i++) {
             boundSql.setAdditionalParameter(parameterMappings.get(i).getProperty(), parameterValue.get(String.valueOf(i)));
         }
-        log.info("【securt-kit】参数处理完成");
+        log.debug("【securt-kit】参数处理完成");
     }
 
 

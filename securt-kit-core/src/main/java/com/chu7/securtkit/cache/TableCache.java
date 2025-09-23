@@ -94,7 +94,7 @@ public class TableCache {
             com.chu7.securtkit.config.properties.FieldEncryptorProperties.TableConfig tableConfig = tableEntry.getValue();
             
             if (!tableConfig.isEnabled()) {
-                log.info("【securt-kit】表 {} 的字段加密已禁用", tableName);
+                log.debug("【securt-kit】表 {} 的字段加密已禁用", tableName);
                 continue;
             }
             
@@ -102,7 +102,7 @@ public class TableCache {
                 tableConfig.getFields();
             
             if (fields == null || fields.isEmpty()) {
-                log.info("【securt-kit】表 {} 未配置字段加密信息", tableName);
+                log.debug("【securt-kit】表 {} 未配置字段加密信息", tableName);
                 continue;
             }
             
@@ -122,7 +122,7 @@ public class TableCache {
                     TABLE_FIELD_ENCRYPT_INFO.computeIfAbsent(tableName, k -> new HashMap<>())
                             .put(fieldName, fieldEncryptor);
                     FIELD_ENCRYPT_TABLE.add(tableName);
-                    log.info("【securt-kit】配置文件添加字段加密: {}.{} -> {}", tableName, fieldName, strategy);
+                    log.debug("【securt-kit】配置文件添加字段加密: {}.{} -> {}", tableName, fieldName, strategy);
                 }
             }
         }

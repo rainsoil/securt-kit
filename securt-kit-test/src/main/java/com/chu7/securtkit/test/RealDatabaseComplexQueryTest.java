@@ -146,7 +146,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("查询到用户数量: {}", users.size());
             
             for (User user : users) {
-                log.info("用户信息: ID={}, 用户名={}, 密码={}, 手机={}, 邮箱={}, 身份证={}", 
+                log.debug("用户信息: ID={}, 用户名={}, 密码={}, 手机={}, 邮箱={}, 身份证={}", 
                     user.getId(), user.getUsername(), user.getPassword(), 
                     user.getPhone(), user.getEmail(), user.getIdCard());
             }
@@ -165,7 +165,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("带别名查询结果数量: {}", usersWithAlias.size());
             
             for (Map<String, Object> result : usersWithAlias) {
-                log.info("别名查询结果: {}", result);
+                log.debug("别名查询结果: {}", result);
             }
             
             log.info("带别名查询测试完成");
@@ -195,7 +195,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("复杂条件查询结果数量: {}", complexResults.size());
             
             for (Map<String, Object> result : complexResults) {
-                log.info("复杂条件查询结果: {}", result);
+                log.debug("复杂条件查询结果: {}", result);
             }
             
             log.info("复杂条件查询测试完成");
@@ -211,15 +211,15 @@ public class RealDatabaseComplexQueryTest {
             List<User> users = userMapper.selectList(null);
             if (!users.isEmpty()) {
                 User user = users.get(0);
-                log.info("原始用户数据: {}", user);
+                log.debug("原始用户数据: {}", user);
                 
                 // 使用FieldEncryptionService进行加密
                 User encryptedUser = fieldEncryptionService.encryptObject(user);
-                log.info("加密后用户数据: {}", encryptedUser);
+                log.debug("加密后用户数据: {}", encryptedUser);
                 
                 // 使用FieldEncryptionService进行解密
                 User decryptedUser = fieldEncryptionService.decryptObject(encryptedUser);
-                log.info("解密后用户数据: {}", decryptedUser);
+                log.debug("解密后用户数据: {}", decryptedUser);
                 
                 // 验证数据一致性
                 assert user.getPassword().equals(decryptedUser.getPassword());
@@ -244,7 +244,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("年龄分组查询结果数量: {}", ageGroupResults.size());
             
             for (Map<String, Object> result : ageGroupResults) {
-                log.info("年龄分组结果: {}", result);
+                log.debug("年龄分组结果: {}", result);
             }
             
             log.info("CASE WHEN查询测试完成");
@@ -261,7 +261,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("子查询结果数量: {}", subQueryResults.size());
             
             for (Map<String, Object> result : subQueryResults) {
-                log.info("子查询结果: {}", result);
+                log.debug("子查询结果: {}", result);
             }
             
             log.info("子查询测试完成");
@@ -291,7 +291,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("窗口函数查询结果数量: {}", windowResults.size());
             
             for (Map<String, Object> result : windowResults) {
-                log.info("窗口函数结果: {}", result);
+                log.debug("窗口函数结果: {}", result);
             }
             
             log.info("窗口函数测试完成");
@@ -308,7 +308,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("两表关联查询结果数量: {}", joinResults.size());
             
             for (Map<String, Object> result : joinResults) {
-                log.info("两表关联查询结果: {}", result);
+                log.debug("两表关联查询结果: {}", result);
             }
             
             log.info("两表关联查询测试完成");
@@ -325,7 +325,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("三表关联查询结果数量: {}", joinResults.size());
             
             for (Map<String, Object> result : joinResults) {
-                log.info("三表关联查询结果: {}", result);
+                log.debug("三表关联查询结果: {}", result);
             }
             
             log.info("三表关联查询测试完成");
@@ -342,7 +342,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("多表关联聚合查询结果数量: {}", aggregationResults.size());
             
             for (Map<String, Object> result : aggregationResults) {
-                log.info("多表关联聚合查询结果: {}", result);
+                log.debug("多表关联聚合查询结果: {}", result);
             }
             
             log.info("多表关联聚合查询测试完成");
@@ -359,7 +359,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("多表关联子查询结果数量: {}", subQueryResults.size());
             
             for (Map<String, Object> result : subQueryResults) {
-                log.info("多表关联子查询结果: {}", result);
+                log.debug("多表关联子查询结果: {}", result);
             }
             
             log.info("多表关联子查询测试完成");
@@ -376,7 +376,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("多表关联CASE WHEN查询结果数量: {}", caseWhenResults.size());
             
             for (Map<String, Object> result : caseWhenResults) {
-                log.info("多表关联CASE WHEN查询结果: {}", result);
+                log.debug("多表关联CASE WHEN查询结果: {}", result);
             }
             
             log.info("多表关联CASE WHEN查询测试完成");
@@ -393,7 +393,7 @@ public class RealDatabaseComplexQueryTest {
             log.info("多表关联窗口函数查询结果数量: {}", windowResults.size());
             
             for (Map<String, Object> result : windowResults) {
-                log.info("多表关联窗口函数查询结果: {}", result);
+                log.debug("多表关联窗口函数查询结果: {}", result);
             }
             
             log.info("多表关联窗口函数查询测试完成");
