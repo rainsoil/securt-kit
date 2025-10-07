@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.chu7.securtkit.safety.config.SafetyAutoConfiguration

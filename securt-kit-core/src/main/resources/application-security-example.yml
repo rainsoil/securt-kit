@@ -1,0 +1,91 @@
+# securt-kit 安全防护配置示例
+securt-kit:
+  security:
+    # 是否启用安全防护
+    enabled: true
+    
+    # XSS防护配置
+    xss:
+      # 是否启用XSS防护
+      enabled: true
+      
+      # XSS防护模式: FILTER(过滤), ENCODE(编码), BOTH(混合)
+      mode: FILTER
+      
+      # XSS防护策略: STRICT(严格), MODERATE(中等), LOOSE(宽松)
+      policy: STRICT
+      
+      # 白名单标签（这些标签不会被过滤）
+      whitelist:
+        - "b"
+        - "i"
+        - "u"
+        - "strong"
+        - "em"
+        - "p"
+        - "br"
+        - "div"
+        - "span"
+        - "h1"
+        - "h2"
+        - "h3"
+        - "h4"
+        - "h5"
+        - "h6"
+      
+      # 黑名单标签（这些标签会被直接过滤）
+      blacklist:
+        - "script"
+        - "iframe"
+        - "object"
+        - "embed"
+        - "form"
+        - "input"
+        - "button"
+        - "link"
+        - "meta"
+      
+      # 白名单属性（这些属性不会被过滤）
+      whitelist-attributes:
+        - "class"
+        - "id"
+        - "style"
+        - "title"
+        - "alt"
+        - "src"
+        - "href"
+        - "target"
+      
+      # 黑名单属性（这些属性会被直接过滤）
+      blacklist-attributes:
+        - "onclick"
+        - "onload"
+        - "onerror"
+        - "onmouseover"
+        - "onfocus"
+        - "onblur"
+        - "onchange"
+        - "onsubmit"
+        - "onkeydown"
+        - "onkeyup"
+        - "onkeypress"
+        - "onmousedown"
+        - "onmouseup"
+        - "onmouseenter"
+        - "onmouseleave"
+      
+      # 是否启用白名单模式（true: 只保留白名单内容, false: 移除黑名单内容）
+      whitelist-mode: false
+      
+      # 是否记录XSS攻击日志
+      log-enabled: true
+      
+      # 是否在检测到XSS时抛出异常
+      throw-exception: false
+
+# 日志配置示例
+logging:
+  level:
+    com.chu7.securtkit.security: DEBUG
+    root: INFO
+

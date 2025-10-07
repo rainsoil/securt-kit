@@ -1,0 +1,30 @@
+# 内置XSS脚本标签规则文件
+# 以#开头的行为注释，会被忽略
+
+# 脚本标签
+<script
+</script>
+<script>
+<script>
+<iframe
+</iframe>
+<iframe>
+<object
+</object>
+<object>
+<embed
+<embed>
+<form
+<form>
+<applet
+</applet>
+<applet>
+<meta
+<meta>
+<base
+<base>
+<link
+<link>
+<style
+</style>
+<style>

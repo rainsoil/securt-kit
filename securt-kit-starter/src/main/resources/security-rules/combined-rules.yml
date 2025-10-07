@@ -1,0 +1,61 @@
+name: "Combined Security Rules"
+description: "Combined security rules for all types of protection"
+version: "1.0.0"
+enabled: true
+
+rules:
+  # XSS规则
+  - id: "combined-xss-script"
+    name: "Combined Script Detection"
+    description: "Detect script tags and JavaScript"
+    type: "XSS"
+    enabled: true
+    priority: 10
+    action: "FILTER"
+    patterns:
+      - "<script[^>]*>.*?</script>"
+      - "javascript\\s*:"
+      - "vbscript\\s*:"
+    exclude-patterns:
+      - "/api/public/**"
+    exclude-params:
+      - "content"
+
+  # SQL注入规则
+  - id: "combined-sql-keywords"
+    name: "Combined SQL Keywords"
+    description: "Detect dangerous SQL keywords"
+    type: "SQL_INJECTION"
+    enabled: true
+    priority: 20
+    action: "BLOCK"
+    patterns:
+      - "\\bselect\\b"
+      - "\\binsert\\b"
+      - "\\bupdate\\b"
+      - "\\bdelete\\b"
+    exclude-patterns:
+      - "/api/admin/**"
+    exclude-params:
+      - "sql"
+
+  # 敏感词规则
+  - id: "combined-sensitive-words"
+    name: "Combined Sensitive Words"
+    description: "Filter sensitive words"
+    type: "SENSITIVE_WORD"
+    enabled: true
+    priority: 30
+    action: "REPLACE"
+    replacement: "***"
+    patterns:
+      - "敏感词1"
+      - "敏感词2"
+      - "敏感词3"
+    exclude-params:
+      - "adminContent"
+
+global-config:
+  default-action: "FILTER"
+  case-sensitive: false
+  log-level: "INFO"

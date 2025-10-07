@@ -1,0 +1,50 @@
+# 内置SQL关键词规则文件
+# 以#开头的行为注释，会被忽略
+
+# 基本SQL关键词
+select
+insert
+update
+delete
+drop
+create
+alter
+exec
+execute
+union
+or
+and
+xor
+not
+where
+having
+group
+order
+by
+from
+into
+values
+set
+table
+database
+schema
+index
+view
+procedure
+function
+trigger
+constraint
+primary
+foreign
+key
+unique
+check
+default
+null
+not null
+auto_increment
+identity
+sequence
+serial
+bigserial
+smallserial

@@ -1,0 +1,87 @@
+# 安全防护配置示例
+securt-kit:
+  safety:
+    # 是否启用安全防护
+    enabled: true
+    
+    # 规则配置（推荐使用）
+    rules:
+      # 是否启用规则文件配置
+      enabled: true
+      # 是否启用内置规则
+      enable-builtin: true
+      # 规则文件路径列表
+      rule-files:
+        - security-rules/xss-rules.yml
+        - security-rules/sql-injection-rules.yml
+        - security-rules/sensitive-word-rules.yml
+        - security-rules/combined-rules.yml
+      # 规则缓存配置
+      cache:
+        enabled: true
+        expire-time: 3600
+        max-size: 1000
+    
+    # XSS防护配置
+    xss:
+      enabled: true
+      # 是否启用内置XSS规则
+      enable-builtin: true
+      # 排除的URL模式（白名单）
+      exclude-patterns:
+        - /api/admin/**
+        - /api/system/**
+        - /api/public/**
+        - /static/**
+        - /css/**
+        - /js/**
+        - /images/**
+      # XSS规则文件路径列表（classpath下）
+      rule-files:
+        - xss-rules/custom-scripts.txt
+        - xss-rules/custom-events.txt
+    
+    # SQL注入防护配置
+    sql-injection:
+      enabled: true
+      # 是否启用内置SQL注入规则
+      enable-builtin: true
+      # 排除的URL模式（白名单）
+      exclude-patterns:
+        - /api/admin/**
+        - /api/system/**
+        - /api/public/**
+      # SQL注入规则文件路径列表（classpath下）
+      rule-files:
+        - sql-rules/custom-keywords.txt
+        - sql-rules/custom-patterns.txt
+      # 危险SQL关键词（兼容旧配置）
+      dangerous-keywords:
+        - drop
+        - delete
+        - update
+        - insert
+        - select
+        - union
+    
+    # 敏感词过滤配置
+    sensitive-word:
+      enabled: true
+      # 是否启用内置敏感词
+      enable-builtin: true
+      # 排除的URL模式（白名单）
+      exclude-patterns:
+        - /api/admin/**
+        - /api/system/**
+        - /api/public/**
+      # 敏感词文件路径列表（classpath下）
+      word-files:
+        - sensitive-words/custom.txt
+        - sensitive-words/my-words.txt
+      # 替换字符
+      replace-char: "*"
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit.safety: DEBUG

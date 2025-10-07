@@ -1,0 +1,23 @@
+# 内置XSS协议规则文件
+# 以#开头的行为注释，会被忽略
+
+# JavaScript协议
+javascript:
+vbscript:
+data:text/html
+data:application/javascript
+data:application/x-javascript
+data:text/javascript
+data:text/vbscript
+data:application/x-vbscript
+
+# 其他危险协议
+file:
+ftp:
+gopher:
+mailto:
+telnet:
+news:
+nntp:
+prospero:
+wais:

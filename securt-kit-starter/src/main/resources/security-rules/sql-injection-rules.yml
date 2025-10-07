@@ -1,0 +1,74 @@
+name: "Custom SQL Injection Protection Rules"
+description: "Custom SQL injection protection rules for specific requirements"
+version: "1.0.0"
+enabled: true
+
+rules:
+  - id: "sql-custom-keywords"
+    name: "Custom Dangerous Keywords"
+    description: "Detect custom dangerous SQL keywords"
+    type: "SQL_INJECTION"
+    enabled: true
+    priority: 5
+    action: "BLOCK"
+    patterns:
+      - "\\bselect\\b"
+      - "\\binsert\\b"
+      - "\\bupdate\\b"
+      - "\\bdelete\\b"
+      - "\\bdrop\\b"
+      - "\\bcreate\\b"
+      - "\\balter\\b"
+    exclude-patterns:
+      - "/api/admin/**"
+      - "/api/system/**"
+    exclude-params:
+      - "sql"
+      - "query"
+
+  - id: "sql-union-queries"
+    name: "Union Queries Detection"
+    description: "Detect union-based SQL injection"
+    type: "SQL_INJECTION"
+    enabled: true
+    priority: 10
+    action: "BLOCK"
+    patterns:
+      - "union\\s+select"
+      - "union\\s+all\\s+select"
+    exclude-params:
+      - "unionQuery"
+
+  - id: "sql-boolean-blind"
+    name: "Boolean Blind Injection"
+    description: "Detect boolean-based blind SQL injection"
+    type: "SQL_INJECTION"
+    enabled: true
+    priority: 15
+    action: "BLOCK"
+    patterns:
+      - "and\\s+\\d+\\s*=\\s*\\d+"
+      - "or\\s+\\d+\\s*=\\s*\\d+"
+      - "and\\s+\\d+\\s*=\\s*\\d+\\s*--"
+      - "or\\s+\\d+\\s*=\\s*\\d+\\s*--"
+    exclude-params:
+      - "booleanQuery"
+
+  - id: "sql-time-delay"
+    name: "Time Delay Injection"
+    description: "Detect time-based SQL injection"
+    type: "SQL_INJECTION"
+    enabled: true
+    priority: 20
+    action: "BLOCK"
+    patterns:
+      - "waitfor\\s+delay"
+      - "sleep\\s*\\("
+      - "benchmark\\s*\\("
+    exclude-params:
+      - "timeQuery"
+
+global-config:
+  default-action: "BLOCK"
+  case-sensitive: false
+  log-level: "WARN"

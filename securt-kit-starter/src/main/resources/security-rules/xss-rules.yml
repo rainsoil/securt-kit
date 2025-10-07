@@ -1,0 +1,59 @@
+name: "Custom XSS Protection Rules"
+description: "Custom XSS protection rules for specific requirements"
+version: "1.0.0"
+enabled: true
+
+rules:
+  - id: "xss-custom-script"
+    name: "Custom Script Detection"
+    description: "Detect custom script patterns"
+    type: "XSS"
+    enabled: true
+    priority: 5
+    action: "FILTER"
+    patterns:
+      - "<script[^>]*>.*?</script>"
+      - "<script[^>]*>"
+      - "javascript\\s*:"
+      - "vbscript\\s*:"
+    exclude-patterns:
+      - "/api/public/**"
+      - "/static/**"
+    exclude-params:
+      - "content"
+      - "description"
+
+  - id: "xss-event-handlers"
+    name: "Event Handlers Detection"
+    description: "Detect event handler attributes"
+    type: "XSS"
+    enabled: true
+    priority: 10
+    action: "FILTER"
+    patterns:
+      - "on\\w+\\s*="
+      - "onclick\\s*="
+      - "onload\\s*="
+      - "onerror\\s*="
+    exclude-params:
+      - "eventHandler"
+
+  - id: "xss-dangerous-tags"
+    name: "Dangerous Tags Detection"
+    description: "Detect dangerous HTML tags"
+    type: "XSS"
+    enabled: true
+    priority: 15
+    action: "BLOCK"
+    patterns:
+      - "<iframe[^>]*>.*?</iframe>"
+      - "<object[^>]*>.*?</object>"
+      - "<embed[^>]*>"
+      - "<form[^>]*>"
+    exclude-patterns:
+      - "/api/admin/**"
+
+global-config:
+  default-action: "FILTER"
+  case-sensitive: false
+  log-level: "WARN"

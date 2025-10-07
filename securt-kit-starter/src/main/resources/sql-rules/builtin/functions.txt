@@ -1,0 +1,88 @@
+# 内置SQL函数规则文件
+# 以#开头的行为注释，会被忽略
+
+# 字符串函数
+char(
+ascii(
+ord(
+substring(
+substr(
+mid(
+left(
+right(
+length(
+len(
+concat(
+concat_ws(
+group_concat(
+char_length(
+character_length(
+bit_length(
+octet_length(
+
+# 数学函数
+abs(
+round(
+floor(
+ceiling(
+ceil(
+truncate(
+mod(
+power(
+sqrt(
+rand(
+pi(
+e(
+
+# 日期时间函数
+now(
+current_timestamp
+current_date
+current_time
+year(
+month(
+day(
+hour(
+minute(
+second(
+date(
+time(
+timestamp(
+date_add(
+date_sub(
+datediff(
+timediff(
+unix_timestamp(
+from_unixtime(
+
+# 条件函数
+case
+when
+then
+else
+end
+if(
+iif(
+coalesce(
+isnull(
+ifnull(
+nullif(
+
+# 聚合函数
+count(
+sum(
+avg(
+min(
+max(
+group_concat(
+string_agg(
+
+# 窗口函数
+row_number(
+rank(
+dense_rank(
+ntile(
+lag(
+lead(
+first_value(
+last_value(
