@@ -1,0 +1,562 @@
+# SQL注入攻击关键字列表
+# 内置SQL注入防护规则文件
+# 包含常见的SQL注入攻击模式和关键字
+
+# SQL关键字
+SELECT
+INSERT
+UPDATE
+DELETE
+DROP
+CREATE
+ALTER
+TRUNCATE
+EXEC
+EXECUTE
+UNION
+JOIN
+INNER JOIN
+LEFT JOIN
+RIGHT JOIN
+FULL JOIN
+CROSS JOIN
+
+# SQL函数
+COUNT
+SUM
+AVG
+MAX
+MIN
+DISTINCT
+GROUP BY
+ORDER BY
+HAVING
+WHERE
+LIKE
+IN
+EXISTS
+BETWEEN
+CASE
+WHEN
+THEN
+ELSE
+END
+AS
+FROM
+INTO
+VALUES
+SET
+
+# 危险SQL操作
+OR 1=1
+OR '1'='1'
+OR "1"="1"
+AND 1=1
+AND '1'='1'
+AND "1"="1"
+UNION SELECT
+UNION ALL SELECT
+'; DROP TABLE
+'; DELETE FROM
+'; UPDATE SET
+'; INSERT INTO
+'; TRUNCATE TABLE
+'; CREATE TABLE
+'; ALTER TABLE
+
+# SQL注入模式
+' OR '
+" OR "
+' AND '
+" AND "
+' UNION '
+" UNION "
+' SELECT '
+" SELECT "
+' INSERT '
+" INSERT "
+' UPDATE '
+" UPDATE "
+' DELETE '
+" DELETE "
+' DROP '
+" DROP "
+' CREATE '
+" CREATE "
+' ALTER '
+" ALTER "
+
+# 存储过程
+sp_
+xp_
+ms_
+sys_
+fn_
+dt_
+
+# 系统函数
+@@version
+@@servername
+@@language
+@@spid
+@@connections
+@@cpu_busy
+@@idle
+@@io_busy
+@@pack_received
+@@pack_sent
+@@packet_errors
+@@timeticks
+@@total_errors
+@@total_read
+@@total_write
+@@trancount
+@@procid
+@@nestlevel
+@@remserver
+@@servicename
+@@dbname
+@@hostname
+@@lock_timeout
+@@max_connections
+@@max_precision
+@@options
+@@rowcount
+@@textsize
+@@tranchained
+@@transtate
+
+# 信息收集
+information_schema
+sys.tables
+sys.columns
+sys.databases
+sys.schemas
+sys.views
+sys.procedures
+sys.functions
+sys.triggers
+sys.indexes
+sys.foreign_keys
+sys.check_constraints
+sys.default_constraints
+sys.key_constraints
+sys.types
+sys.objects
+sys.sysusers
+sys.syslogins
+sys.sysdatabases
+sys.sysobjects
+sys.syscolumns
+sys.sysindexes
+sys.sysforeignkeys
+sys.sysreferences
+sys.sysconstraints
+sys.syscomments
+sys.sysdepends
+sys.sysfiles
+sys.sysfilegroups
+sys.sysallocations
+sys.syspermissions
+sys.sysprotects
+sys.sysusers
+sys.sysmembers
+sys.syscacheobjects
+sys.syscursors
+sys.syscursorrefs
+sys.syscursortables
+sys.syslockinfo
+sys.sysprocesses
+sys.syssessions
+sys.sysservers
+sys.sysremotelogins
+sys.syslinkedservers
+sys.sysoledbusers
+sys.sysperfinfo
+sys.sysperfcounters
+sys.sysprocesses
+sys.syslocks
+sys.syslockinfo
+sys.sysmessages
+sys.syslanguages
+sys.syscharsets
+sys.sysconfigures
+sys.syscurconfigs
+sys.sysdevices
+sys.sysusermessages
+sys.sysaltfiles
+sys.syscacheobjects
+sys.syscursors
+sys.syscursorrefs
+sys.syscursortables
+sys.syslockinfo
+sys.sysprocesses
+sys.syssessions
+sys.sysservers
+sys.sysremotelogins
+sys.syslinkedservers
+sys.sysoledbusers
+sys.sysperfinfo
+sys.sysperfcounters
+sys.sysprocesses
+sys.syslocks
+sys.syslockinfo
+sys.sysmessages
+sys.syslanguages
+sys.syscharsets
+sys.sysconfigures
+sys.syscurconfigs
+sys.sysdevices
+sys.sysusermessages
+sys.sysaltfiles
+
+# 盲注模式
+AND (SELECT COUNT(*) FROM
+AND (SELECT LENGTH(
+AND (SELECT SUBSTRING(
+AND (SELECT ASCII(
+AND (SELECT CHAR(
+AND (SELECT CONVERT(
+AND (SELECT CAST(
+AND (SELECT ISNULL(
+AND (SELECT NULLIF(
+AND (SELECT COALESCE(
+AND (SELECT CASE WHEN
+AND (SELECT IF(
+AND (SELECT IIF(
+AND (SELECT CHOOSE(
+AND (SELECT STRING_AGG(
+AND (SELECT STRING_ESCAPE(
+AND (SELECT FORMAT(
+AND (SELECT PARSE(
+AND (SELECT TRY_CAST(
+AND (SELECT TRY_CONVERT(
+AND (SELECT TRY_PARSE(
+
+# 时间盲注
+WAITFOR DELAY
+WAITFOR TIME
+SLEEP
+BENCHMARK
+PG_SLEEP
+SLEEP(
+DELAY
+TIMEOUT
+
+# 布尔盲注
+AND 1=1
+AND 1=2
+AND 'a'='a'
+AND 'a'='b'
+AND 1>0
+AND 1<0
+AND LENGTH(
+AND ASCII(
+AND SUBSTRING(
+AND CHAR(
+AND CONVERT(
+AND CAST(
+AND ISNULL(
+AND NULLIF(
+AND COALESCE(
+
+# 错误注入
+AND EXTRACTVALUE(
+AND UPDATEXML(
+AND (SELECT * FROM (SELECT COUNT(*),CONCAT(
+AND (SELECT * FROM (SELECT COUNT(*),CONCAT(VERSION(),FLOOR(RAND(0)*2))x FROM information_schema.tables GROUP BY x)a)
+AND (SELECT * FROM (SELECT COUNT(*),CONCAT(DATABASE(),FLOOR(RAND(0)*2))x FROM information_schema.tables GROUP BY x)a)
+AND (SELECT * FROM (SELECT COUNT(*),CONCAT(USER(),FLOOR(RAND(0)*2))x FROM information_schema.tables GROUP BY x)a)
+
+# 编码绕过
+%27
+%22
+%3D
+%3C
+%3E
+%2F
+%5C
+%2A
+%2B
+%2D
+%5F
+%20
+%09
+%0A
+%0D
+%00
+%0B
+%0C
+%1A
+%7F
+%80
+%81
+%82
+%83
+%84
+%85
+%86
+%87
+%88
+%89
+%8A
+%8B
+%8C
+%8D
+%8E
+%8F
+%90
+%91
+%92
+%93
+%94
+%95
+%96
+%97
+%98
+%99
+%9A
+%9B
+%9C
+%9D
+%9E
+%9F
+%A0
+%A1
+%A2
+%A3
+%A4
+%A5
+%A6
+%A7
+%A8
+%A9
+%AA
+%AB
+%AC
+%AD
+%AE
+%AF
+%B0
+%B1
+%B2
+%B3
+%B4
+%B5
+%B6
+%B7
+%B8
+%B9
+%BA
+%BB
+%BC
+%BD
+%BE
+%BF
+%C0
+%C1
+%C2
+%C3
+%C4
+%C5
+%C6
+%C7
+%C8
+%C9
+%CA
+%CB
+%CC
+%CD
+%CE
+%CF
+%D0
+%D1
+%D2
+%D3
+%D4
+%D5
+%D6
+%D7
+%D8
+%D9
+%DA
+%DB
+%DC
+%DD
+%DE
+%DF
+%E0
+%E1
+%E2
+%E3
+%E4
+%E5
+%E6
+%E7
+%E8
+%E9
+%EA
+%EB
+%EC
+%ED
+%EE
+%EF
+%F0
+%F1
+%F2
+%F3
+%F4
+%F5
+%F6
+%F7
+%F8
+%F9
+%FA
+%FB
+%FC
+%FD
+%FE
+%FF
+
+# 注释绕过
+/*
+*/
+--
+#
+/**/
+/*!*/
+/*!50000*/
+/*!50001*/
+/*!50002*/
+/*!50003*/
+/*!50004*/
+/*!50005*/
+/*!50006*/
+/*!50007*/
+/*!50008*/
+/*!50009*/
+/*!50010*/
+/*!50011*/
+/*!50012*/
+/*!50013*/
+/*!50014*/
+/*!50015*/
+/*!50016*/
+/*!50017*/
+/*!50018*/
+/*!50019*/
+/*!50020*/
+/*!50021*/
+/*!50022*/
+/*!50023*/
+/*!50024*/
+/*!50025*/
+/*!50026*/
+/*!50027*/
+/*!50028*/
+/*!50029*/
+/*!50030*/
+/*!50031*/
+/*!50032*/
+/*!50033*/
+/*!50034*/
+/*!50035*/
+/*!50036*/
+/*!50037*/
+/*!50038*/
+/*!50039*/
+/*!50040*/
+/*!50041*/
+/*!50042*/
+/*!50043*/
+/*!50044*/
+/*!50045*/
+/*!50046*/
+/*!50047*/
+/*!50048*/
+/*!50049*/
+/*!50050*/
+/*!50051*/
+/*!50052*/
+/*!50053*/
+/*!50054*/
+/*!50055*/
+/*!50056*/
+/*!50057*/
+/*!50058*/
+/*!50059*/
+/*!50060*/
+/*!50061*/
+/*!50062*/
+/*!50063*/
+/*!50064*/
+/*!50065*/
+/*!50066*/
+/*!50067*/
+/*!50068*/
+/*!50069*/
+/*!50070*/
+/*!50071*/
+/*!50072*/
+/*!50073*/
+/*!50074*/
+/*!50075*/
+/*!50076*/
+/*!50077*/
+/*!50078*/
+/*!50079*/
+/*!50080*/
+/*!50081*/
+/*!50082*/
+/*!50083*/
+/*!50084*/
+/*!50085*/
+/*!50086*/
+/*!50087*/
+/*!50088*/
+/*!50089*/
+/*!50090*/
+/*!50091*/
+/*!50092*/
+/*!50093*/
+/*!50094*/
+/*!50095*/
+/*!50096*/
+/*!50097*/
+/*!50098*/
+/*!50099*/
+/*!50100*/
+
+# 特殊字符
+'
+"
+`
+\
+/
+*
++
+-
+=
+<
+>
+&
+|
+^
+~
+!
+@
+$
+%
+(
+)
+[
+]
+{
+}
+;
+:
+,
+.
+?
+_
+-

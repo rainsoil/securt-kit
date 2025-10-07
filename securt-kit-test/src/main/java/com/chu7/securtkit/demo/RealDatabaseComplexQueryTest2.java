@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @Slf4j
 @SpringBootApplication
-public class RealDatabaseComplexQueryTest {
+public class RealDatabaseComplexQueryTest2 {
 
     public static void main(String[] args) {
         SpringApplication.run(RealDatabaseComplexQueryTest2.class, args);

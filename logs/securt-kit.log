@@ -450,7 +450,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 20:35:54.692 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 20:35:54.692 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后实体结果: MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=testuser, password=password123, phone=�4�]��M, email=test@example.com, address=北京市朝阳区, age=25)
 2025-09-24 20:35:54.693 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试List结果 ---
@@ -484,7 +484,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 20:35:54.693 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 20:35:54.693 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:password456
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at index 1
@@ -515,7 +515,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 20:35:54.693 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 20:35:54.693 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后List结果: [MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=user1, password=password123, phone=�4�]��M, email=user1@example.com, address=北京市朝阳区, age=25), MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=2, username=user2, password=password456, phone=�4�]��M, email=user2@example.com, address=上海市浦东区, age=30)]
 2025-09-24 20:35:54.693 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试Map结果 ---
@@ -547,7 +547,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 20:35:54.694 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 20:35:54.694 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后Map结果: {password=password123, address=北京市朝阳区, phone=�4�]��M, id=1, email=test@example.com, age=25, username=testuser}
 2025-09-24 20:35:54.694 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试基本类型结果 ---
@@ -598,7 +598,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 20:35:54.697 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:张三
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at index 0
 	at cn.hutool.core.codec.Base16Codec.toDigit(Base16Codec.java:114)
@@ -626,7 +626,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 20:35:54.697 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 20:35:54.697 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后多表关联查询结果: [{password=password123, phone=�4�]��M, id_card=�]5�]}�M5�]v�, real_name=张三, id=1, email=user1@example.com, username=user1}]
 2025-09-24 20:35:54.697 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试带别名的查询结果 ---
@@ -658,7 +658,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 20:35:54.698 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 20:35:54.698 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后带别名查询结果: [{profile_id_card=�]5�]}�M5�]v�, profile_name=张三, user_email=user1@example.com, user_id=1, user_name=user1, user_phone=�4�]��M}]
 2025-09-24 20:35:54.698 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试聚合查询结果 ---
@@ -690,7 +690,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 20:35:54.698 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后聚合查询结果: [{customer_names=张三,李四,王五, order_count=3, username=user1}]
 2025-09-24 20:35:54.698 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 复杂查询结果测试完成！
 2025-09-24 20:35:54.698 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - === 测试Map参数处理 ===
@@ -2644,7 +2644,7 @@ org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: org.apache.ibatis.exceptions.PersistenceException: 
 ### Error updating database.  Cause: java.lang.reflect.UndeclaredThrowableException
 ### Cause: java.lang.reflect.UndeclaredThrowableException
@@ -2782,7 +2782,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:42:15.653 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:42:15.653 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后实体结果: MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=testuser, password=password123, phone=�4�]��M, email=test@example.com, address=北京市朝阳区, age=25)
 2025-09-24 22:42:15.653 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试List结果 ---
@@ -2816,7 +2816,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:42:15.654 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:42:15.654 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:password456
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at index 1
@@ -2847,7 +2847,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:42:15.654 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:42:15.654 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后List结果: [MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=user1, password=password123, phone=�4�]��M, email=user1@example.com, address=北京市朝阳区, age=25), MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=2, username=user2, password=password456, phone=�4�]��M, email=user2@example.com, address=上海市浦东区, age=30)]
 2025-09-24 22:42:15.654 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试Map结果 ---
@@ -2879,7 +2879,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:42:15.654 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:42:15.655 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后Map结果: {password=password123, address=北京市朝阳区, phone=�4�]��M, id=1, email=test@example.com, age=25, username=testuser}
 2025-09-24 22:42:15.655 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试基本类型结果 ---
@@ -2930,7 +2930,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:42:15.657 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:张三
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at index 0
 	at cn.hutool.core.codec.Base16Codec.toDigit(Base16Codec.java:114)
@@ -2958,7 +2958,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:42:15.657 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:42:15.657 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后多表关联查询结果: [{password=password123, phone=�4�]��M, id_card=�]5�]}�M5�]v�, real_name=张三, id=1, email=user1@example.com, username=user1}]
 2025-09-24 22:42:15.657 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试带别名的查询结果 ---
@@ -2990,7 +2990,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:42:15.658 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:42:15.658 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后带别名查询结果: [{profile_id_card=�]5�]}�M5�]v�, profile_name=张三, user_email=user1@example.com, user_id=1, user_name=user1, user_phone=�4�]��M}]
 2025-09-24 22:42:15.658 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试聚合查询结果 ---
@@ -3022,7 +3022,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:42:15.658 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后聚合查询结果: [{customer_names=张三,李四,王五, order_count=3, username=user1}]
 2025-09-24 22:42:15.658 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 复杂查询结果测试完成！
 2025-09-24 22:42:15.658 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - === 测试Map参数处理 ===
@@ -3064,7 +3064,7 @@ java.lang.IllegalStateException: Failed to execute CommandLineRunner
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error updating database.  Cause: java.lang.reflect.UndeclaredThrowableException
 ### The error may exist in com/chu7/securtkit/test/mapper/UserMapper.java (best guess)
@@ -3595,7 +3595,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -3647,7 +3647,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character z at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.866 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.866 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13900139000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -3690,7 +3690,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -3742,7 +3742,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character l at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.867 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.867 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13700137000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -3785,7 +3785,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -3837,7 +3837,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character w at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.869 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 查询到 3 个用户
 2025-09-24 22:43:54.869 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 用户ID: 1, 用户名: 张三, 密码: 123456, 手机: 13800138000, 邮箱: zhangsan@example.com, 身份证: �]5�]}�M5�]v�
 2025-09-24 22:43:54.869 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 用户ID: 2, 用户名: 李四, 密码: 654321, 手机: 13900139000, 邮箱: lisi@example.com, 身份证: �]5�]}�M6�mv�
@@ -3892,7 +3892,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -3945,7 +3945,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character w at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.876 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13900139000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at cn.hutool.crypto.symmetric.SymmetricCrypto.decrypt(SymmetricCrypto.java:331)
@@ -3988,7 +3988,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -4041,7 +4041,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character l at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.877 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at cn.hutool.crypto.symmetric.SymmetricCrypto.decrypt(SymmetricCrypto.java:331)
@@ -4084,7 +4084,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -4137,7 +4137,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character z at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.878 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 带别名的查询结果: [{USER_PHONE=13700137000, USER_ID_CARD=�]5�]}�M7�}v�, USER_CREATE_TIME=2025-09-24 22:43:54.829, USER_EMAIL=wangwu@example.com, USER_ID=3, USER_UPDATE_TIME=2025-09-24 22:43:54.829, USER_NAME=王五, USER_AGE=35}, {USER_PHONE=13900139000, USER_ID_CARD=�]5�]}�M6�mv�, USER_CREATE_TIME=2025-09-24 22:43:54.826, USER_EMAIL=lisi@example.com, USER_ID=2, USER_UPDATE_TIME=2025-09-24 22:43:54.826, USER_NAME=李四, USER_AGE=30}, {USER_PHONE=13800138000, USER_ID_CARD=�]5�]}�M5�]v�, USER_CREATE_TIME=2025-09-24 22:43:54.808, USER_EMAIL=zhangsan@example.com, USER_ID=1, USER_UPDATE_TIME=2025-09-24 22:43:54.808, USER_NAME=张三, USER_AGE=25}]
 2025-09-24 22:43:54.887 [main] DEBUG c.c.s.i.PoJoParamEncryptorInterceptor - 【securt-kit】PoJoParamEncryptorInterceptor被触发，SQL: SELECT COUNT(*) as total_users, AVG(age) as avg_age, MAX(age) as max_age, MIN(age) as min_age, COUNT(DISTINCT phone) as unique_phones FROM test_user
 2025-09-24 22:43:54.887 [main] DEBUG c.c.s.i.PoJoParamEncryptorInterceptor - 【securt-kit】SQL包含需要加密的表，开始加密处理
@@ -4198,7 +4198,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.901 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.901 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后实体结果: MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=testuser, password=password123, phone=�4�]��M, email=test@example.com, address=北京市朝阳区, age=25)
 2025-09-24 22:43:54.901 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试List结果 ---
@@ -4232,7 +4232,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.901 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.901 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:password456
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at index 1
@@ -4263,7 +4263,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.901 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.901 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后List结果: [MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=user1, password=password123, phone=�4�]��M, email=user1@example.com, address=北京市朝阳区, age=25), MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=2, username=user2, password=password456, phone=�4�]��M, email=user2@example.com, address=上海市浦东区, age=30)]
 2025-09-24 22:43:54.902 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试Map结果 ---
@@ -4295,7 +4295,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.902 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.902 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后Map结果: {password=password123, address=北京市朝阳区, phone=�4�]��M, id=1, email=test@example.com, age=25, username=testuser}
 2025-09-24 22:43:54.902 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试基本类型结果 ---
@@ -4346,7 +4346,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.904 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:张三
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at index 0
 	at cn.hutool.core.codec.Base16Codec.toDigit(Base16Codec.java:114)
@@ -4374,7 +4374,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.904 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.904 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后多表关联查询结果: [{password=password123, phone=�4�]��M, id_card=�]5�]}�M5�]v�, real_name=张三, id=1, email=user1@example.com, username=user1}]
 2025-09-24 22:43:54.904 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试带别名的查询结果 ---
@@ -4406,7 +4406,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.904 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.904 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后带别名查询结果: [{profile_id_card=�]5�]}�M5�]v�, profile_name=张三, user_email=user1@example.com, user_id=1, user_name=user1, user_phone=�4�]��M}]
 2025-09-24 22:43:54.904 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试聚合查询结果 ---
@@ -4438,7 +4438,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.905 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后聚合查询结果: [{customer_names=张三,李四,王五, order_count=3, username=user1}]
 2025-09-24 22:43:54.905 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 复杂查询结果测试完成！
 2025-09-24 22:43:54.905 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - === 测试Map参数处理 ===
@@ -4663,7 +4663,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -4723,7 +4723,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character z at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.973 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.973 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13900139000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -4774,7 +4774,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -4834,7 +4834,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character l at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.973 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.974 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13700137000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -4885,7 +4885,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -4945,7 +4945,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character w at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.974 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.974 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -4996,7 +4996,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -5056,7 +5056,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.974 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.974 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -5107,7 +5107,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -5167,7 +5167,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.974 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:43:54.975 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -5218,7 +5218,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -5278,7 +5278,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:43:54.975 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 批量查询结果数量: 6
 2025-09-24 22:43:54.975 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 用户: User(id=1, username=张三, password=123456, phone=13800138000, email=zhangsan@example.com, idCard=�]5�]}�M5�]v�, age=25, createTime=Wed Sep 24 22:43:54 CST 2025, updateTime=Wed Sep 24 22:43:54 CST 2025)
 2025-09-24 22:43:54.975 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 用户: User(id=2, username=李四, password=654321, phone=13900139000, email=lisi@example.com, idCard=�]5�]}�M6�mv�, age=30, createTime=Wed Sep 24 22:43:54 CST 2025, updateTime=Wed Sep 24 22:43:54 CST 2025)
@@ -5305,7 +5305,7 @@ java.lang.IllegalStateException: Failed to execute CommandLineRunner
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
 	at java.lang.String.substring(String.java:1931)
 	at com.chu7.securtkit.test.MyBatisPlusEncryptionDemo.lambda$1(MyBatisPlusEncryptionDemo.java:116)
@@ -5721,7 +5721,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -5773,7 +5773,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character z at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.008 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.008 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13900139000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -5816,7 +5816,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -5868,7 +5868,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character l at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.009 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.009 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13700137000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -5911,7 +5911,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -5963,7 +5963,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character w at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.009 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 查询到 3 个用户
 2025-09-24 22:51:57.009 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 用户ID: 1, 用户名: 张三, 密码: 123456, 手机: 13800138000, 邮箱: zhangsan@example.com, 身份证: �]5�]}�M5�]v�
 2025-09-24 22:51:57.009 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 用户ID: 2, 用户名: 李四, 密码: 654321, 手机: 13900139000, 邮箱: lisi@example.com, 身份证: �]5�]}�M6�mv�
@@ -6018,7 +6018,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -6071,7 +6071,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character w at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.018 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13900139000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at cn.hutool.crypto.symmetric.SymmetricCrypto.decrypt(SymmetricCrypto.java:331)
@@ -6114,7 +6114,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -6167,7 +6167,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character l at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.018 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at cn.hutool.crypto.symmetric.SymmetricCrypto.decrypt(SymmetricCrypto.java:331)
@@ -6210,7 +6210,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -6263,7 +6263,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character z at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.019 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 带别名的查询结果: [{USER_PHONE=13700137000, USER_ID_CARD=�]5�]}�M7�}v�, USER_CREATE_TIME=2025-09-24 22:51:56.975, USER_EMAIL=wangwu@example.com, USER_ID=3, USER_UPDATE_TIME=2025-09-24 22:51:56.975, USER_NAME=王五, USER_AGE=35}, {USER_PHONE=13900139000, USER_ID_CARD=�]5�]}�M6�mv�, USER_CREATE_TIME=2025-09-24 22:51:56.972, USER_EMAIL=lisi@example.com, USER_ID=2, USER_UPDATE_TIME=2025-09-24 22:51:56.972, USER_NAME=李四, USER_AGE=30}, {USER_PHONE=13800138000, USER_ID_CARD=�]5�]}�M5�]v�, USER_CREATE_TIME=2025-09-24 22:51:56.955, USER_EMAIL=zhangsan@example.com, USER_ID=1, USER_UPDATE_TIME=2025-09-24 22:51:56.955, USER_NAME=张三, USER_AGE=25}]
 2025-09-24 22:51:57.029 [main] DEBUG c.c.s.i.PoJoParamEncryptorInterceptor - 【securt-kit】PoJoParamEncryptorInterceptor被触发，SQL: SELECT COUNT(*) as total_users, AVG(age) as avg_age, MAX(age) as max_age, MIN(age) as min_age, COUNT(DISTINCT phone) as unique_phones FROM test_user
 2025-09-24 22:51:57.029 [main] DEBUG c.c.s.i.PoJoParamEncryptorInterceptor - 【securt-kit】SQL包含需要加密的表，开始加密处理
@@ -6324,7 +6324,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.040 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.040 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后实体结果: MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=testuser, password=password123, phone=�4�]��M, email=test@example.com, address=北京市朝阳区, age=25)
 2025-09-24 22:51:57.040 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试List结果 ---
@@ -6358,7 +6358,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.040 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.040 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:password456
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at index 1
@@ -6389,7 +6389,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.040 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.040 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后List结果: [MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=user1, password=password123, phone=�4�]��M, email=user1@example.com, address=北京市朝阳区, age=25), MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=2, username=user2, password=password456, phone=�4�]��M, email=user2@example.com, address=上海市浦东区, age=30)]
 2025-09-24 22:51:57.040 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试Map结果 ---
@@ -6421,7 +6421,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.041 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.041 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后Map结果: {password=password123, address=北京市朝阳区, phone=�4�]��M, id=1, email=test@example.com, age=25, username=testuser}
 2025-09-24 22:51:57.041 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试基本类型结果 ---
@@ -6472,7 +6472,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.043 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:张三
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at index 0
 	at cn.hutool.core.codec.Base16Codec.toDigit(Base16Codec.java:114)
@@ -6500,7 +6500,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.043 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.043 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后多表关联查询结果: [{password=password123, phone=�4�]��M, id_card=�]5�]}�M5�]v�, real_name=张三, id=1, email=user1@example.com, username=user1}]
 2025-09-24 22:51:57.043 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试带别名的查询结果 ---
@@ -6532,7 +6532,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.044 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.044 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后带别名查询结果: [{profile_id_card=�]5�]}�M5�]v�, profile_name=张三, user_email=user1@example.com, user_id=1, user_name=user1, user_phone=�4�]��M}]
 2025-09-24 22:51:57.044 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试聚合查询结果 ---
@@ -6564,7 +6564,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.044 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后聚合查询结果: [{customer_names=张三,李四,王五, order_count=3, username=user1}]
 2025-09-24 22:51:57.044 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 复杂查询结果测试完成！
 2025-09-24 22:51:57.044 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - === 测试Map参数处理 ===
@@ -6789,7 +6789,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -6849,7 +6849,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character z at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.098 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.099 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13900139000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -6900,7 +6900,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -6960,7 +6960,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character l at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.099 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.099 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13700137000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -7011,7 +7011,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -7071,7 +7071,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character w at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.099 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.099 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -7122,7 +7122,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -7182,7 +7182,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.100 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.100 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -7233,7 +7233,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -7293,7 +7293,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.100 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:51:57.100 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -7344,7 +7344,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -7404,7 +7404,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:51:57.100 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 批量查询结果数量: 6
 2025-09-24 22:51:57.100 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 用户: User(id=1, username=张三, password=123456, phone=13800138000, email=zhangsan@example.com, idCard=�]5�]}�M5�]v�, age=25, createTime=Wed Sep 24 22:51:56 CST 2025, updateTime=Wed Sep 24 22:51:56 CST 2025)
 2025-09-24 22:51:57.100 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 用户: User(id=2, username=李四, password=654321, phone=13900139000, email=lisi@example.com, idCard=�]5�]}�M6�mv�, age=30, createTime=Wed Sep 24 22:51:56 CST 2025, updateTime=Wed Sep 24 22:51:56 CST 2025)
@@ -7431,7 +7431,7 @@ java.lang.IllegalStateException: Failed to execute CommandLineRunner
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
 	at java.lang.String.substring(String.java:1931)
 	at com.chu7.securtkit.test.MyBatisPlusEncryptionDemo.lambda$demonstrateBatchOperations$1(MyBatisPlusEncryptionDemo.java:116)
@@ -7847,7 +7847,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -7899,7 +7899,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character z at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.057 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.058 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13900139000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -7942,7 +7942,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -7994,7 +7994,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character l at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.058 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.058 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13700137000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -8037,7 +8037,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -8089,7 +8089,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character w at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.058 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 查询到 3 个用户
 2025-09-24 22:53:57.058 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 用户ID: 1, 用户名: 张三, 密码: 123456, 手机: 13800138000, 邮箱: zhangsan@example.com, 身份证: �]5�]}�M5�]v�
 2025-09-24 22:53:57.058 [main] INFO  c.c.s.test.MixedConfigEncryptionDemo - 用户ID: 2, 用户名: 李四, 密码: 654321, 手机: 13900139000, 邮箱: lisi@example.com, 身份证: �]5�]}�M6�mv�
@@ -8147,7 +8147,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.061 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.061 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后实体结果: MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=testuser, password=password123, phone=�4�]��M, email=test@example.com, address=北京市朝阳区, age=25)
 2025-09-24 22:53:57.061 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试List结果 ---
@@ -8181,7 +8181,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.061 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.061 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:password456
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at index 1
@@ -8212,7 +8212,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.061 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.061 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后List结果: [MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=user1, password=password123, phone=�4�]��M, email=user1@example.com, address=北京市朝阳区, age=25), MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=2, username=user2, password=password456, phone=�4�]��M, email=user2@example.com, address=上海市浦东区, age=30)]
 2025-09-24 22:53:57.061 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试Map结果 ---
@@ -8244,7 +8244,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.061 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.061 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后Map结果: {password=password123, address=北京市朝阳区, phone=�4�]��M, id=1, email=test@example.com, age=25, username=testuser}
 2025-09-24 22:53:57.061 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试基本类型结果 ---
@@ -8295,7 +8295,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.063 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:张三
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at index 0
 	at cn.hutool.core.codec.Base16Codec.toDigit(Base16Codec.java:114)
@@ -8323,7 +8323,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.064 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.064 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后多表关联查询结果: [{password=password123, phone=�4�]��M, id_card=�]5�]}�M5�]v�, real_name=张三, id=1, email=user1@example.com, username=user1}]
 2025-09-24 22:53:57.064 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试带别名的查询结果 ---
@@ -8355,7 +8355,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.064 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.064 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后带别名查询结果: [{profile_id_card=�]5�]}�M5�]v�, profile_name=张三, user_email=user1@example.com, user_id=1, user_name=user1, user_phone=�4�]��M}]
 2025-09-24 22:53:57.064 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试聚合查询结果 ---
@@ -8387,7 +8387,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.064 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后聚合查询结果: [{customer_names=张三,李四,王五, order_count=3, username=user1}]
 2025-09-24 22:53:57.064 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 复杂查询结果测试完成！
 2025-09-24 22:53:57.064 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - === 测试Map参数处理 ===
@@ -8612,7 +8612,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -8672,7 +8672,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character z at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.119 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.120 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13900139000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -8723,7 +8723,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -8783,7 +8783,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character l at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.120 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.120 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13700137000
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -8834,7 +8834,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -8894,7 +8894,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character w at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.121 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.121 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -8945,7 +8945,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -9005,7 +9005,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.121 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.121 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -9056,7 +9056,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -9116,7 +9116,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.122 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 22:53:57.122 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -9167,7 +9167,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -9227,7 +9227,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 22:53:57.122 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 批量查询结果数量: 6
 2025-09-24 22:53:57.123 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 用户: User(id=1, username=张三, password=123456, phone=13800138000, email=zhangsan@example.com, idCard=�]5�]}�M5�]v�, age=25, createTime=Wed Sep 24 22:53:56 CST 2025, updateTime=Wed Sep 24 22:53:56 CST 2025)
 2025-09-24 22:53:57.123 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 用户: User(id=2, username=李四, password=654321, phone=13900139000, email=lisi@example.com, idCard=�]5�]}�M6�mv�, age=30, createTime=Wed Sep 24 22:53:57 CST 2025, updateTime=Wed Sep 24 22:53:57 CST 2025)
@@ -9254,7 +9254,7 @@ java.lang.IllegalStateException: Failed to execute CommandLineRunner
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
 	at java.lang.String.substring(String.java:1931)
 	at com.chu7.securtkit.test.MyBatisPlusEncryptionDemo.lambda$demonstrateBatchOperations$1(MyBatisPlusEncryptionDemo.java:116)
@@ -9559,7 +9559,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.718 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 23:03:36.718 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后实体结果: MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=testuser, password=password123, phone=�4�]��M, email=test@example.com, address=北京市朝阳区, age=25)
 2025-09-24 23:03:36.719 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试List结果 ---
@@ -9593,7 +9593,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.719 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 23:03:36.719 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:password456
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at index 1
@@ -9624,7 +9624,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.719 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 23:03:36.719 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后List结果: [MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=1, username=user1, password=password123, phone=�4�]��M, email=user1@example.com, address=北京市朝阳区, age=25), MyBatisInterceptorIntegrationTest.MyBatisInterceptorTestRunner.User(id=2, username=user2, password=password456, phone=�4�]��M, email=user2@example.com, address=上海市浦东区, age=30)]
 2025-09-24 23:03:36.719 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试Map结果 ---
@@ -9656,7 +9656,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.719 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 23:03:36.719 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后Map结果: {password=password123, address=北京市朝阳区, phone=�4�]��M, id=1, email=test@example.com, age=25, username=testuser}
 2025-09-24 23:03:36.719 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试基本类型结果 ---
@@ -9707,7 +9707,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character p at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.722 [main] ERROR c.c.s.e.p.AesPoJoFieldEncryptorStrategy - 【securt-kit】AES解密失败 ciphertext:张三
 cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at index 0
 	at cn.hutool.core.codec.Base16Codec.toDigit(Base16Codec.java:114)
@@ -9735,7 +9735,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.722 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 23:03:36.722 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后多表关联查询结果: [{password=password123, phone=�4�]��M, id_card=�]5�]}�M5�]v�, real_name=张三, id=1, email=user1@example.com, username=user1}]
 2025-09-24 23:03:36.722 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试带别名的查询结果 ---
@@ -9767,7 +9767,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.722 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 23:03:36.722 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后带别名查询结果: [{profile_id_card=�]5�]}�M5�]v�, profile_name=张三, user_email=user1@example.com, user_id=1, user_name=user1, user_phone=�4�]��M}]
 2025-09-24 23:03:36.722 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - --- 测试聚合查询结果 ---
@@ -9799,7 +9799,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character 张 at in
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.722 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 解密后聚合查询结果: [{customer_names=张三,李四,王五, order_count=3, username=user1}]
 2025-09-24 23:03:36.722 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - 复杂查询结果测试完成！
 2025-09-24 23:03:36.722 [main] INFO  c.c.s.t.MyBatisInterceptorIntegrationTest - === 测试Map参数处理 ===
@@ -10030,7 +10030,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -10090,7 +10090,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character z at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.805 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 23:03:36.805 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -10141,7 +10141,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -10201,7 +10201,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.806 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 23:03:36.806 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -10252,7 +10252,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -10312,7 +10312,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.806 [main] WARN  c.c.s.e.p.Md5PoJoFieldEncryptorStrategy - 【securt-kit】MD5是单向加密算法，无法解密，返回原密文
 2025-09-24 23:03:36.808 [main] ERROR c.c.s.e.p.DefaultPoJoFieldEncryptorPattern - 【securt-kit】POJO模式解密失败 ciphertext:13800138010
 cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
@@ -10363,7 +10363,7 @@ cn.hutool.crypto.CryptoException: IllegalBlockSizeException: Input length must b
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: javax.crypto.IllegalBlockSizeException: Input length must be multiple of 8 when decrypting with padded cipher
 	at com.sun.crypto.provider.CipherCore.prepareInputBuffer(CipherCore.java:1005)
 	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:848)
@@ -10423,7 +10423,7 @@ cn.hutool.core.exceptions.UtilException: Illegal hexadecimal character t at inde
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 2025-09-24 23:03:36.809 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 批量查询结果数量: 4
 2025-09-24 23:03:36.809 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 用户: User(id=1, username=张三, password=123456, phone=13800138000, email=zhangsan@example.com, idCard=�]5�]}�M5�]v�, age=25, createTime=Wed Sep 24 23:03:36 CST 2025, updateTime=Wed Sep 24 23:03:36 CST 2025)
 2025-09-24 23:03:36.809 [main] INFO  c.c.s.test.MyBatisPlusEncryptionDemo - 用户: User(id=2, username=批量用户1, password=123456, phone=13800138010, email=batch1@example.com, idCard=�]5�]}�M5�]4�, age=25, createTime=Wed Sep 24 23:03:36 CST 2025, updateTime=Wed Sep 24 23:03:36 CST 2025)
@@ -10448,7 +10448,7 @@ java.lang.IllegalStateException: Failed to execute CommandLineRunner
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
-	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest.main(RealDatabaseComplexQueryTest.java:38)
+	at com.chu7.securtkit.test.RealDatabaseComplexQueryTest2.main(RealDatabaseComplexQueryTest.java:38)
 Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
 	at java.lang.String.substring(String.java:1931)
 	at com.chu7.securtkit.test.MyBatisPlusEncryptionDemo.lambda$demonstrateBatchOperations$1(MyBatisPlusEncryptionDemo.java:116)

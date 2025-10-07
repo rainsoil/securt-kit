@@ -1,6 +1,6 @@
 package com.chu7.securtkit.safety.config;
 
-import com.chu7.securtkit.safety.filter.SafetyFilter;
+import com.chu7.securtkit.safety.filter.UnifiedSecurityProtectionFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -16,24 +16,28 @@ import org.springframework.core.Ordered;
 @ConditionalOnProperty(prefix = "securt-kit.safety", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class SafetyAutoConfiguration {
     
+    // 已统一为统一安全防护过滤器，移除单独的XSS/SQL注入/敏感词过滤器注册与Bean
+    
     /**
-     * 注册安全防护过滤器
+     * 注册统一安全防护过滤器
      */
     @Bean
-    public FilterRegistrationBean<SafetyFilter> safetyFilterRegistration(SafetyFilter safetyFilter) {
-        FilterRegistrationBean<SafetyFilter> registration = new FilterRegistrationBean<>();
-        registration.setFilter(safetyFilter);
+    @ConditionalOnProperty(prefix = "securt-kit.safety", name = "unified-filter", havingValue = "true", matchIfMissing = false)
+    public FilterRegistrationBean<UnifiedSecurityProtectionFilter> unifiedSecurityProtectionFilterRegistration(UnifiedSecurityProtectionFilter unifiedSecurityProtectionFilter) {
+        FilterRegistrationBean<UnifiedSecurityProtectionFilter> registration = new FilterRegistrationBean<>();
+        registration.setFilter(unifiedSecurityProtectionFilter);
         registration.addUrlPatterns("/*");
-        registration.setName("safetyFilter");
-        registration.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        registration.setName("unifiedSecurityProtectionFilter");
+        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 1); // 最高优先级
         return registration;
     }
     
     /**
-     * 安全防护过滤器Bean
+     * 统一安全防护过滤器Bean
      */
     @Bean
-    public SafetyFilter safetyFilter() {
-        return new SafetyFilter();
+    @ConditionalOnProperty(prefix = "securt-kit.safety", name = "unified-filter", havingValue = "true", matchIfMissing = false)
+    public UnifiedSecurityProtectionFilter unifiedSecurityProtectionFilter() {
+        return new UnifiedSecurityProtectionFilter();
     }
 }

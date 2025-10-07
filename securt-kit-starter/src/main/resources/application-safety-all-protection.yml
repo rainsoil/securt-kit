@@ -1,0 +1,144 @@
+# 完整的安全防护配置示例
+# 包含XSS防护、SQL注入防护和敏感词过滤
+
+securt-kit:
+  safety:
+    enabled: true
+    
+    # XSS防护配置
+    xss:
+      enabled: true
+      enable-builtin: true
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"
+          - "/static/**"
+          - "/health"
+          - "/actuator/**"
+          - "/swagger-ui/**"
+          - "/v3/api-docs/**"
+          - "/favicon.ico"
+          - "/robots.txt"
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        config-files:
+          - "xss-whitelist/custom/trusted-ips.txt"
+        allowed-ips:
+          - "127.0.0.1"
+          - "192.168.1.0/24"
+          - "10.0.0.0/8"
+          - "172.16.0.0/12"
+          - "::1"
+    
+    # SQL注入防护配置
+    sql-injection:
+      enabled: true
+      enable-builtin: true
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"
+          - "/static/**"
+          - "/health"
+          - "/actuator/**"
+          - "/swagger-ui/**"
+          - "/v3/api-docs/**"
+          - "/favicon.ico"
+          - "/robots.txt"
+          - "/api/readonly/**"
+          - "/api/report/**"
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        config-files:
+          - "sql-injection-whitelist/custom/trusted-ips.txt"
+        allowed-ips:
+          - "127.0.0.1"
+          - "192.168.1.0/24"
+          - "10.0.0.0/8"
+          - "172.16.0.0/12"
+          - "::1"
+    
+    # 敏感词过滤配置
+    sensitive-word:
+      enabled: true
+      enable-builtin: true
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"
+          - "/static/**"
+          - "/health"
+          - "/actuator/**"
+          - "/swagger-ui/**"
+          - "/v3/api-docs/**"
+          - "/favicon.ico"
+          - "/robots.txt"
+          - "/api/content/**"
+          - "/api/media/**"
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        config-files:
+          - "sensitive-word-whitelist/custom/trusted-ips.txt"
+        allowed-ips:
+          - "127.0.0.1"
+          - "192.168.1.0/24"
+          - "10.0.0.0/8"
+          - "172.16.0.0/12"
+          - "::1"
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit.safety: DEBUG
+    root: INFO
+
+# 服务器配置
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# 配置说明：
+# 1. 三种防护功能可以独立启用/禁用
+# 2. 每种防护功能都有独立的URL白名单和IP白名单配置
+# 3. 关键字文件自动读取，无需配置
+# 4. 支持多种检测模式：strict(严格) / normal(普通) / loose(宽松)
+
+# 防护功能说明：
+# - XSS防护：检测和过滤跨站脚本攻击
+# - SQL注入防护：检测和过滤SQL注入攻击
+# - 敏感词过滤：检测和过滤敏感词内容
+
+# 关键字文件说明：
+# - XSS关键字：xss-keywords/builtin/xss-keywords.txt
+# - SQL注入关键字：sql-injection-keywords/builtin/sql-injection-keywords.txt
+# - 敏感词关键字：sensitive-word-keywords/builtin/sensitive-word-keywords.txt
+
+# 代码使用示例：
+# // XSS防护
+# boolean hasXss = XssProtectionUtil.containsXssAttack(content);
+# String filteredXss = XssProtectionUtil.filterXssAttack(content);
+# 
+# // SQL注入防护
+# boolean hasSqlInjection = SqlInjectionProtectionUtil.containsSqlInjectionAttack(content);
+# String filteredSql = SqlInjectionProtectionUtil.filterSqlInjectionAttack(content);
+# 
+# // 敏感词过滤
+# boolean hasSensitiveWord = SensitiveWordProtectionUtil.containsSensitiveWord(content);
+# String filteredSensitive = SensitiveWordProtectionUtil.filterSensitiveWord(content);

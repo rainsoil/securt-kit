@@ -1,0 +1,147 @@
+# 完整的安全防护配置示例
+# 包含XSS防护和SQL注入防护
+
+securt-kit:
+  safety:
+    enabled: true
+    
+    # XSS防护配置
+    xss:
+      enabled: true
+      enable-builtin: true
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"           # 公开API接口
+          - "/static/**"               # 静态资源
+          - "/health"                  # 健康检查
+          - "/actuator/**"             # Spring Boot Actuator
+          - "/swagger-ui/**"           # Swagger UI
+          - "/v3/api-docs/**"          # OpenAPI文档
+          - "/favicon.ico"             # 网站图标
+          - "/robots.txt"              # 搜索引擎爬虫文件
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        # 外部IP白名单配置文件路径列表
+        config-files:
+          - "xss-whitelist/custom/trusted-ips.txt"
+          - "xss-whitelist/custom/internal-ips.txt"
+        # 直接配置的IP白名单列表
+        allowed-ips:
+          - "127.0.0.1"               # 本地回环地址
+          - "192.168.1.0/24"          # 内网网段
+          - "10.0.0.0/8"              # 私有网段A
+          - "172.16.0.0/12"           # 私有网段B
+          - "::1"                     # IPv6本地回环
+    
+    # SQL注入防护配置
+    sql-injection:
+      enabled: true
+      enable-builtin: true
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"           # 公开API接口
+          - "/static/**"               # 静态资源
+          - "/health"                  # 健康检查
+          - "/actuator/**"             # Spring Boot Actuator
+          - "/swagger-ui/**"           # Swagger UI
+          - "/v3/api-docs/**"          # OpenAPI文档
+          - "/favicon.ico"             # 网站图标
+          - "/robots.txt"              # 搜索引擎爬虫文件
+          - "/api/readonly/**"         # 只读API接口
+          - "/api/report/**"           # 报表API接口
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        # 外部IP白名单配置文件路径列表
+        config-files:
+          - "sql-injection-whitelist/custom/trusted-ips.txt"
+          - "sql-injection-whitelist/custom/internal-ips.txt"
+        # 直接配置的IP白名单列表
+        allowed-ips:
+          - "127.0.0.1"               # 本地回环地址
+          - "192.168.1.0/24"          # 内网网段
+          - "10.0.0.0/8"              # 私有网段A
+          - "172.16.0.0/12"           # 私有网段B
+          - "::1"                     # IPv6本地回环
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit.safety: DEBUG
+    root: INFO
+
+# 服务器配置
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# 配置说明：
+# 1. XSS防护和SQL注入防护可以独立启用/禁用
+# 2. 每个防护功能都有独立的URL白名单和IP白名单配置
+# 3. 关键字文件自动读取，无需配置
+# 4. 支持多种检测模式：strict(严格) / normal(普通) / loose(宽松)
+
+# XSS关键字配置说明：
+# - 系统会自动读取内置关键字文件：xss-keywords/builtin/xss-keywords.txt
+# - 系统会自动读取外部关键字文件：
+#   - xss-keywords/custom/my-xss-keywords.txt
+#   - xss-keywords/custom/custom-patterns.txt
+
+# SQL注入关键字配置说明：
+# - 系统会自动读取内置关键字文件：sql-injection-keywords/builtin/sql-injection-keywords.txt
+# - 系统会自动读取外部关键字文件：
+#   - sql-injection-keywords/custom/my-sql-keywords.txt
+#   - sql-injection-keywords/custom/custom-sql-patterns.txt
+
+# 示例：自定义IP白名单文件内容
+# 文件路径：src/main/resources/xss-whitelist/custom/trusted-ips.txt
+# 内容示例：
+# 192.168.1.100
+# 192.168.1.101
+# 10.0.0.50
+# 172.16.0.10/24
+
+# 示例：自定义XSS关键字文件内容
+# 文件路径：src/main/resources/xss-keywords/custom/my-xss-keywords.txt
+# 内容示例：
+# <script>
+# </script>
+# javascript:
+# onclick
+# onload
+# eval(
+# document.write
+# innerHTML
+# outerHTML
+
+# 示例：自定义SQL注入关键字文件内容
+# 文件路径：src/main/resources/sql-injection-keywords/custom/my-sql-keywords.txt
+# 内容示例：
+# SELECT
+# UNION
+# DROP
+# INSERT
+# UPDATE
+# DELETE
+# CREATE
+# ALTER
+# EXEC
+# EXECUTE
+# sp_
+# xp_
+# ms_
+# sys_
+# fn_
+# dt_

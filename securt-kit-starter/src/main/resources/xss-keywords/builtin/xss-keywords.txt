@@ -1,0 +1,174 @@
+# XSS攻击关键字列表
+# 内置XSS防护规则文件
+# 包含常见的XSS攻击模式和关键字
+
+# 脚本标签
+<script>
+</script>
+<script src=
+<script type=
+<script language=
+<iframe>
+</iframe>
+<iframe src=
+<embed>
+</embed>
+<object>
+</object>
+<applet>
+</applet>
+
+# 事件处理器
+onload
+onerror
+onclick
+onmouseover
+onmouseout
+onfocus
+onblur
+onchange
+onsubmit
+onreset
+onkeydown
+onkeyup
+onkeypress
+onmousedown
+onmouseup
+onmousemove
+ondblclick
+oncontextmenu
+onresize
+onscroll
+onabort
+onbeforeunload
+onunload
+onhashchange
+onpageshow
+onpagehide
+onpopstate
+onstorage
+onmessage
+onbeforeprint
+onafterprint
+ononline
+onoffline
+
+# 危险协议
+javascript:
+vbscript:
+data:text/html
+data:text/javascript
+data:application/javascript
+data:application/x-javascript
+
+# 危险属性
+src=
+href=
+style=
+background=
+background-image:
+background-color:
+expression(
+-moz-binding
+behavior:
+binding:
+
+# 编码绕过
+%3Cscript%3E
+%3C/script%3E
+&#60;script&#62;
+&#60;/script&#62;
+&lt;script&gt;
+&lt;/script&gt;
+&#x3C;script&#x3E;
+&#x3C;/script&#x3E;
+
+# 其他危险模式
+document.cookie
+document.write
+document.writeln
+window.location
+window.open
+eval(
+setTimeout(
+setInterval(
+Function(
+String.fromCharCode
+unescape(
+decodeURI(
+decodeURIComponent(
+innerHTML
+outerHTML
+insertAdjacentHTML
+execScript
+
+# 表单相关
+<form>
+</form>
+<input type=
+<textarea>
+</textarea>
+<button>
+</button>
+<select>
+</select>
+<option>
+</option>
+
+# 链接和媒体
+<a href=
+<img src=
+<video src=
+<audio src=
+<source src=
+
+# 样式相关
+<style>
+</style>
+<link rel=
+@import
+url(
+expression(
+-moz-binding
+behavior:
+
+# 注释绕过
+<!--
+-->
+/* */
+//
+/*
+
+# 特殊字符
+<
+>
+"
+'
+`
+&
+#
+%
++
+=
+/
+\
+|
+^
+~
+!
+@
+$
+*
+(
+)
+[
+]
+{
+}
+;
+:
+,
+.
+?
+_
+-

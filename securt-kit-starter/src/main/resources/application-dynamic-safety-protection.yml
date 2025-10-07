@@ -1,0 +1,167 @@
+# 动态安全防护配置示例
+# 移除所有写死的规则，改为从配置文件动态加载
+
+securt-kit:
+  safety:
+    enabled: true
+    # 启用统一过滤器（推荐使用）
+    unified-filter: true
+    
+    # XSS防护配置
+    xss:
+      enabled: true
+      enable-builtin: true
+      # 内置关键字文件路径（可配置）
+      builtin-keyword-file: "xss-keywords/builtin/xss-keywords.txt"
+      # 外部关键字文件路径列表（可配置）
+      external-keyword-files:
+        - "xss-keywords/custom/my-xss-keywords.txt"
+        - "xss-keywords/custom/custom-xss-patterns.txt"
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"
+          - "/static/**"
+          - "/health"
+          - "/actuator/**"
+          - "/swagger-ui/**"
+          - "/v3/api-docs/**"
+          - "/favicon.ico"
+          - "/robots.txt"
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        config-files:
+          - "xss-whitelist/custom/trusted-ips.txt"
+        allowed-ips:
+          - "127.0.0.1"
+          - "192.168.1.0/24"
+          - "10.0.0.0/8"
+          - "172.16.0.0/12"
+          - "::1"
+    
+    # SQL注入防护配置
+    sql-injection:
+      enabled: true
+      enable-builtin: true
+      # 内置关键字文件路径（可配置）
+      builtin-keyword-file: "sql-injection-keywords/builtin/sql-injection-keywords.txt"
+      # 外部关键字文件路径列表（可配置）
+      external-keyword-files:
+        - "sql-injection-keywords/custom/my-sql-keywords.txt"
+        - "sql-injection-keywords/custom/custom-sql-patterns.txt"
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"
+          - "/static/**"
+          - "/health"
+          - "/actuator/**"
+          - "/swagger-ui/**"
+          - "/v3/api-docs/**"
+          - "/favicon.ico"
+          - "/robots.txt"
+          - "/api/readonly/**"
+          - "/api/report/**"
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        config-files:
+          - "sql-injection-whitelist/custom/trusted-ips.txt"
+        allowed-ips:
+          - "127.0.0.1"
+          - "192.168.1.0/24"
+          - "10.0.0.0/8"
+          - "172.16.0.0/12"
+          - "::1"
+    
+    # 敏感词过滤配置
+    sensitive-word:
+      enabled: true
+      enable-builtin: true
+      # 内置关键字文件路径（可配置）
+      builtin-keyword-file: "sensitive-word-keywords/builtin/sensitive-word-keywords.txt"
+      # 外部关键字文件路径列表（可配置）
+      external-keyword-files:
+        - "sensitive-word-keywords/custom/my-sensitive-keywords.txt"
+        - "sensitive-word-keywords/custom/custom-sensitive-patterns.txt"
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"
+          - "/static/**"
+          - "/health"
+          - "/actuator/**"
+          - "/swagger-ui/**"
+          - "/v3/api-docs/**"
+          - "/favicon.ico"
+          - "/robots.txt"
+          - "/api/content/**"
+          - "/api/media/**"
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        config-files:
+          - "sensitive-word-whitelist/custom/trusted-ips.txt"
+        allowed-ips:
+          - "127.0.0.1"
+          - "192.168.1.0/24"
+          - "10.0.0.0/8"
+          - "172.16.0.0/12"
+          - "::1"
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit.safety: DEBUG
+    root: INFO
+
+# 服务器配置
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# 配置说明：
+# 1. 移除所有写死的规则和关键字
+# 2. 所有关键字都从配置文件动态加载
+# 3. 支持自定义内置和外部关键字文件路径
+# 4. 支持动态启用/禁用内置规则
+# 5. 支持多种检测模式：strict(严格) / normal(普通) / loose(宽松)
+
+# 优化后的特性：
+# - 无硬编码：所有规则都从配置文件加载
+# - 动态配置：支持运行时修改配置文件
+# - 灵活扩展：易于添加新的防护类型
+# - 统一管理：通过统一过滤器处理所有防护
+# - 性能优化：减少代码重复，提高执行效率
+
+# 代码使用示例：
+# @Autowired
+# private SecurityProtectionChain securityProtectionChain;
+# 
+# // 检查攻击
+# boolean hasAttack = securityProtectionChain.containsAttack(content);
+# 
+# // 过滤攻击
+# String filtered = securityProtectionChain.filterAttack(content);
+# 
+# // 获取匹配关键字
+# Map<SecurityProtectionType, List<String>> keywords = 
+#     securityProtectionChain.getMatchedKeywords(content);
+# 
+# // 获取防护统计
+# Map<SecurityProtectionType, Integer> stats = 
+#     securityProtectionChain.getProtectionStats();

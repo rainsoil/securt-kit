@@ -1,0 +1,149 @@
+# 统一安全防护配置示例
+# 使用新的设计模式架构，支持统一过滤器
+
+securt-kit:
+  safety:
+    enabled: true
+    # 启用统一过滤器（推荐使用）
+    unified-filter: true
+    
+    # XSS防护配置
+    xss:
+      enabled: true
+      enable-builtin: true
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"
+          - "/static/**"
+          - "/health"
+          - "/actuator/**"
+          - "/swagger-ui/**"
+          - "/v3/api-docs/**"
+          - "/favicon.ico"
+          - "/robots.txt"
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        config-files:
+          - "xss-whitelist/custom/trusted-ips.txt"
+        allowed-ips:
+          - "127.0.0.1"
+          - "192.168.1.0/24"
+          - "10.0.0.0/8"
+          - "172.16.0.0/12"
+          - "::1"
+    
+    # SQL注入防护配置
+    sql-injection:
+      enabled: true
+      enable-builtin: true
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"
+          - "/static/**"
+          - "/health"
+          - "/actuator/**"
+          - "/swagger-ui/**"
+          - "/v3/api-docs/**"
+          - "/favicon.ico"
+          - "/robots.txt"
+          - "/api/readonly/**"
+          - "/api/report/**"
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        config-files:
+          - "sql-injection-whitelist/custom/trusted-ips.txt"
+        allowed-ips:
+          - "127.0.0.1"
+          - "192.168.1.0/24"
+          - "10.0.0.0/8"
+          - "172.16.0.0/12"
+          - "::1"
+    
+    # 敏感词过滤配置
+    sensitive-word:
+      enabled: true
+      enable-builtin: true
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"
+          - "/static/**"
+          - "/health"
+          - "/actuator/**"
+          - "/swagger-ui/**"
+          - "/v3/api-docs/**"
+          - "/favicon.ico"
+          - "/robots.txt"
+          - "/api/content/**"
+          - "/api/media/**"
+      
+      # IP白名单配置
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        config-files:
+          - "sensitive-word-whitelist/custom/trusted-ips.txt"
+        allowed-ips:
+          - "127.0.0.1"
+          - "192.168.1.0/24"
+          - "10.0.0.0/8"
+          - "172.16.0.0/12"
+          - "::1"
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit.safety: DEBUG
+    root: INFO
+
+# 服务器配置
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# 配置说明：
+# 1. unified-filter: true - 启用统一过滤器，使用新的设计模式架构
+# 2. 三种防护功能可以独立启用/禁用
+# 3. 每种防护功能都有独立的URL白名单和IP白名单配置
+# 4. 关键字文件自动读取，无需配置
+# 5. 支持多种检测模式：strict(严格) / normal(普通) / loose(宽松)
+
+# 设计模式优势：
+# - 策略模式：支持动态切换不同的防护策略
+# - 模板方法模式：统一处理流程，减少代码重复
+# - 工厂模式：统一创建和管理防护策略实例
+# - 责任链模式：支持多种防护的协同工作
+# - 统一过滤器：提高性能，简化配置
+
+# 代码使用示例：
+# @Autowired
+# private SecurityProtectionChain securityProtectionChain;
+# 
+# // 检查攻击
+# boolean hasAttack = securityProtectionChain.containsAttack(content);
+# 
+# // 过滤攻击
+# String filtered = securityProtectionChain.filterAttack(content);
+# 
+# // 获取匹配关键字
+# Map<SecurityProtectionType, List<String>> keywords = 
+#     securityProtectionChain.getMatchedKeywords(content);
+# 
+# // 获取防护统计
+# Map<SecurityProtectionType, Integer> stats = 
+#     securityProtectionChain.getProtectionStats();

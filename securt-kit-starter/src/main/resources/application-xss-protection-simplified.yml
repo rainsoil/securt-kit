@@ -1,0 +1,95 @@
+# XSS防护配置示例（简化版）
+# 只保留必要的配置项：是否开启、是否开启内置规则、外部配置文件路径列表、url白名单列表、ip白名单列表
+
+securt-kit:
+  safety:
+    enabled: true
+    xss:
+      enabled: true
+      enable-builtin: true
+      
+      # URL白名单配置
+      url-whitelist:
+        enabled: true
+        allowed-urls:
+          - "/api/public/**"           # 公开API接口
+          - "/static/**"               # 静态资源
+          - "/health"                  # 健康检查
+          - "/actuator/**"             # Spring Boot Actuator
+          - "/swagger-ui/**"           # Swagger UI
+          - "/v3/api-docs/**"          # OpenAPI文档
+          - "/favicon.ico"             # 网站图标
+          - "/robots.txt"              # 搜索引擎爬虫文件
+      
+      # IP白名单配置（简化）
+      ip-whitelist:
+        enabled: true
+        enable-builtin: true
+        # 外部IP白名单配置文件路径列表
+        config-files:
+          - "xss-whitelist/custom/trusted-ips.txt"
+          - "xss-whitelist/custom/internal-ips.txt"
+        # 直接配置的IP白名单列表
+        allowed-ips:
+          - "127.0.0.1"               # 本地回环地址
+          - "192.168.1.0/24"          # 内网网段
+          - "10.0.0.0/8"              # 私有网段A
+          - "172.16.0.0/12"           # 私有网段B
+          - "::1"                     # IPv6本地回环
+      
+      # XSS关键字配置（简化）
+      keywords:
+        enabled: true
+        enable-builtin: true
+        # 外部XSS关键字配置文件路径列表
+        config-files:
+          - "xss-keywords/custom/my-xss-keywords.txt"
+          - "xss-keywords/custom/custom-patterns.txt"
+        # 直接配置的XSS关键字列表
+        keywords:
+          - "eval("
+          - "document.write("
+          - "innerHTML"
+          - "outerHTML"
+        # 检测模式：strict(严格) / normal(普通) / loose(宽松)
+        detection-mode: normal
+
+# 日志配置
+logging:
+  level:
+    com.chu7.securtkit.safety: DEBUG
+    root: INFO
+
+# 服务器配置
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# 配置说明：
+# 1. 是否开启：enabled - 控制整个功能是否启用
+# 2. 是否开启内置规则：enable-builtin - 控制是否加载内置规则文件
+# 3. 外部配置文件路径列表：config-files - 指定外部配置文件路径
+# 4. URL白名单列表：allowed-urls - 直接配置的URL白名单
+# 5. IP白名单列表：allowed-ips - 直接配置的IP白名单
+
+# 示例：自定义IP白名单文件内容
+# 文件路径：src/main/resources/xss-whitelist/custom/trusted-ips.txt
+# 内容示例：
+# 192.168.1.100
+# 192.168.1.101
+# 10.0.0.50
+# 172.16.0.10/24
+
+# 示例：自定义XSS关键字文件内容
+# 文件路径：src/main/resources/xss-keywords/custom/my-xss-keywords.txt
+# 内容示例：
+# <script>
+# </script>
+# javascript:
+# onclick
+# onload
+# eval(
+# document.write
+# innerHTML
+# outerHTML
